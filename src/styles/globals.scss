@@ -1,0 +1,57 @@
+
+
+// src/styles/globals.scss
+
+/* Global reset for cross-browser consistency */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Arial', sans-serif; /* Set a universal font */
+  line-height: 1.5;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit; /* Make links inherit text color */
+}
+
+ul, ol {
+  list-style: none; /* Remove list bullets */
+}
+
+table {
+  border-collapse: collapse; /* Remove table spacing */
+  width: 100%; /* Make tables expand to full width */
+}
+
+img {
+  max-width: 100%; /* Ensure images are responsive */
+  height: auto;
+}
+
+button,
+input,
+textarea {
+  font: inherit; /* Ensure form elements inherit the font */
+  background: none; /* Remove background for inputs */
+  border: none; /* Remove borders from inputs */
+  outline: none; /* Remove focus outline */
+}
+
+html {
+  scroll-behavior: smooth; /* Optional: Smooth scrolling */
+  overflow-x: hidden;
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+}

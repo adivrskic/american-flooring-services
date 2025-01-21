@@ -1,0 +1,60 @@
+@import '../../styles/variables';
+
+.image-row {
+  display: flex;
+  height: calc(100vh - 86.5px); /* Full screen height */
+  width: 100vw; /* Full width */
+  overflow: hidden;
+
+  &__item {
+    flex: 1; /* All images share equal space by default */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: flex 0.5s ease, transform 0.5s ease;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      flex: 1.4; /* Increase width by 20% (1 + 0.4 = 1.4) */
+      transform: scale(1.1); /* Slight zoom for emphasis */
+      transform-origin: center;
+    }
+
+    &:not(:hover) {
+      flex: 0.9; /* Reduce width of non-hovered items */
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: $text-md;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+}
+
+
+@media (max-width: 1080px) {
+  .image-row {
+    flex-direction: column;
+  }
+}

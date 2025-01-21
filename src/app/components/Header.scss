@@ -1,0 +1,227 @@
+@import '../../styles/variables';
+
+/* src/app/components/Header.module.scss */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .logo {
+    img {
+      height: 60px;
+      min-width: 233px;
+      filter: brightness(0) invert(1);
+      transition: all 0.2s ease;
+
+      &.scrolled {
+        filter: initial;
+      }
+    }
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $padding-md;
+
+    @media (max-width: 1080px) {
+      display: none; // Hide the nav by default on smaller screens
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: $padding-md;
+    text-transform: uppercase;
+
+    &.scrolled a {
+      color: $text-dark;
+    }
+  }
+
+  .nav-links li {
+    color: #fff;
+  }
+
+  .nav-links li.active a {
+    color: $primary;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: $text-sm;
+    transition: color 0.2s ease-in-out;
+    color: #fff;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .contact-link,
+  .address-link {
+    color: $text-dark;
+    font-size: $text-sm;
+    transition: color 0.2s ease-in-out;
+    color: #fff;
+    position: relative;
+    display: flex;
+
+    &.scrolled {
+      color: $text-dark;
+    }
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .contact-button {
+    background-color: $primary;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 3px;
+    font-size: $text-sm;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: darken($primary, 10%);
+    }
+  }
+
+  /* Scroll effect */
+  &.scrolled {
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+    .hamburger svg {
+      color: $text-dark;
+    }
+  }
+
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+
+    @media (max-width: 1080px) {
+      display: block;
+
+      svg {
+        color: $text-light;
+        font-size: $text-md;
+      }
+    }
+  }
+
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $primary;
+    opacity: 0.95;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .icon-wrapper {
+      margin-top: $padding-md;
+    }
+
+    .overlay-nav {
+      list-style: none;
+      text-align: center;
+
+      li a {
+        display: block;
+        text-decoration: none;
+        color: #fff;
+        font-size: $text-md;
+        margin: 10px 0;
+        text-transform: uppercase;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+  }
+}
+
+.tooltip {
+  position: absolute;
+  background-color: $primary;
+  top: 100%;
+  right: 0;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: $text-sm;
+  border-radius: 3px;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.icon-wrapper {
+  position: relative;
+
+  &:hover .tooltip {
+    opacity: 1;
+    transform: translateY(15px);
+  }
+}
+
+.main-nav.open .hamburger svg {
+  color: $text-light;
+}
+
+@media (max-width: 1080px) {
+  .header {
+    .nav-links {
+      display: none; // Hide default nav on small screens
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    .logo img {
+      height: 45px;
+      min-width: initial;
+    }
+  }
+}
+

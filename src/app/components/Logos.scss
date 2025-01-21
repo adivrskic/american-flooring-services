@@ -1,0 +1,110 @@
+@import '../../styles/variables';
+
+.logo-grid {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 86.5px); /* Full screen height */
+  box-sizing: border-box;
+
+  h2 {
+    text-align: center;
+    margin: $padding-md 0;
+    font-size: $text-lg;
+    text-transform: uppercase;
+  }
+
+  .logo-grid__images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $padding-md; /* Space between logos */
+    margin-bottom: $padding-md;
+    padding: 0 $padding-md;
+  }
+
+  .logo-grid__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $padding-sm; /* Optional spacing */
+    background-color: $bg; /* Optional background for logo */
+    border-radius: 3px;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+
+  .logo-grid__image {
+    max-width: 100%;
+    max-height: 100px; /* Adjust as needed */
+    object-fit: contain; /* Preserve aspect ratio */
+  }
+
+  .logo-grid__stats {
+    flex-grow: 1; /* Occupy remaining height */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: $primary; /* Optional background for stats section */
+    padding: $padding-md;
+  }
+
+  .logo-grid__stat {
+    text-align: center;
+    font-size: $text-xl;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    width: 33.333%;
+
+    span {
+      display: block;
+      // margin-top: 5px;
+      font-size: $text-sm;
+      font-weight: normal;
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  .logo-grid {
+    min-height: fit-content;
+
+    h2 {
+      font-size: $text-md;
+    }
+
+    .logo-grid__images {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .logo-grid__stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo-grid__stats {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: $padding-lg;
+    }
+  }
+  
+
+}
+
+@media (max-width: 600px) {
+  .logo-grid {
+    .logo-grid__images {
+      gap: $padding-sm;
+    }
+
+    .logo-grid__stat {
+      font-size: $text-lg;
+    }
+  }
+}

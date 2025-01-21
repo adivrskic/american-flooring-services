@@ -1,0 +1,50 @@
+@import '../../styles/variables';
+
+.google-map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $bg;
+  height: calc(100vh - 86.5px);
+  position: relative;
+
+  &__heading {
+    padding: $padding-md 0;
+    font-size: $text-lg;
+    text-align: center;
+    text-transform: uppercase;
+
+    span {
+      color: $primary;
+      
+    }
+  }
+
+  iframe {
+    position: relative;
+    border: none;
+    width: 100%;
+    z-index: 1;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+      z-index: 2;
+      pointer-events: none; /* So the gradient doesn’t block map interaction */
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  .google-map {
+    &__heading {
+      font-size: $text-md;
+    }
+  }
+}

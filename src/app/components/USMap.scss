@@ -1,0 +1,75 @@
+@import '../../styles/variables';
+.us-map {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: $bg;
+  margin-top: 86.5px;
+  padding-top: $padding-md;
+  height: calc(100vh - 86.5px);
+  text-transform: uppercase;
+
+  h2 {
+    font-size: $text-lg;
+  }
+
+  p {
+    font-size: $text-md;
+    color: $primary;
+  }
+}
+
+.svg-map {
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  svg {
+    height: 100%;
+
+  }
+
+  svg a {
+    fill: darken($bg, 10%);
+  }
+
+  svg a#GA,
+  svg a#MT,
+  svg a#NV,
+  svg a#AZ,
+  svg a#TX,
+  svg a#LA,
+  svg a#MS,
+  svg a#AL,
+  svg a#FL,
+  svg a#TN,
+  svg a#KY,
+  svg a#IN,
+  svg a#VA,
+  svg a#NC,
+  svg a#SC {
+    fill: $primary;
+    transition: all .2s ease-in-out;
+  }
+
+  svg a#GA:hover,
+  svg a#MT:hover,
+  svg a#NV:hover,
+  svg a#AZ:hover,
+  svg a#TX:hover,
+  svg a#LA:hover,
+  svg a#MS:hover,
+  svg a#AL:hover,
+  svg a#FL:hover,
+  svg a#TN:hover,
+  svg a#KY:hover,
+  svg a#IN:hover,
+  svg a#VA:hover,
+  svg a#NC:hover,
+  svg a#SC:hover {
+    fill: darken($primary, 10%);
+  }
+}
