@@ -18,7 +18,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: $padding-md; /* Space between logos */
     margin-bottom: $padding-md;
-    padding: 0 $padding-md;
+    padding: 0 $padding-lg;
   }
 
   .logo-grid__item {
@@ -31,7 +31,7 @@
     transition: transform 0.2s ease-in-out;
 
     &:hover {
-      transform: scale(1.04);
+      transform: scale(1.02);
     }
   }
 

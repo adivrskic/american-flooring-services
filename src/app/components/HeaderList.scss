@@ -7,7 +7,7 @@
   justify-content: center;
   padding: $padding-md;
   gap: $padding-md;
-  background-color: darken($bg, 2.5%);
+  background-color: $bg;
 
   h2 {
     font-size: $text-lg;
