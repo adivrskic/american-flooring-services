@@ -23,7 +23,7 @@
 }
 
 .svg-map {
-  height: 100%;
+  height: calc(100% - 86.5px);
   width: 100%;
 
   display: flex;
@@ -73,5 +73,16 @@
   svg a#NC:hover,
   svg a#SC:hover {
     fill: darken($primary, 10%);
+  }
+}
+
+@media (max-width: 600px) {
+  .us-map {
+    margin-top: 71.5px;
+    height: calc(100vh - 71.5px);
+  }
+
+  .svg-map {
+    height: calc(100% - 71.5px);
   }
 }

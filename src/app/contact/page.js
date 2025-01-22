@@ -3,7 +3,6 @@ import ContactForm from "../components/Contact";
 const ContactPage = () => {
   return (
     <ContactForm />
-
   );
 };
 

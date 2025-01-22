@@ -36,7 +36,6 @@ const slides = [
 const PortfolioPage = () => {
   return (
     <Slideshow slides={slides} />
-
   );
 };
 
