@@ -120,6 +120,11 @@
     .hamburger svg {
       color: $text-dark;
     }
+
+    .hamburger svg.mobile,
+    .menu-overlay svg.mobile {
+      color: $text-light;
+    }
   }
 
   .hamburger {

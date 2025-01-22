@@ -62,3 +62,13 @@
     flex-direction: column;
   }
 }
+
+@media (max-width: 600px) {
+  .image-row {
+    height: calc(100vh - 71.5px); /* Full screen height */
+
+    &.margin {
+      margin-top: 71.5px;
+    }
+  }
+}

@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-between;
   gap: $padding-md;
-  height: calc(100vh - 86.5px);
+  min-height: calc(100vh - 86.5px);
   margin-top: 86.5px;
 
   .image-column {
@@ -22,6 +22,7 @@
   .text-column {
     flex: 1;
     padding: $padding-md;
+
     h1 {
       font-size:$text-lg;
       margin-bottom: $padding-md;
@@ -49,5 +50,29 @@
     .image-column {
       margin-bottom: 20px;
     }
+  }
+}
+
+@media (max-width: 960px) {
+  .two-column-layout {
+    .image-column {
+      display: none;
+    }
+
+    .text-column {      
+      h1 {
+        text-align: center;
+      }
+  
+      p {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .two-column-layout {
+    min-height: calc(100vh - 71.5px);
   }
 }

@@ -72,3 +72,25 @@
     }
   }
 }
+
+@media (max-width: 960px) {
+  .meet-the-team {
+    .team-gallery {
+      flex-wrap: wrap;
+      .team-member {
+        width: 46%;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .meet-the-team {
+    .team-gallery {
+      flex-wrap: wrap;
+      .team-member {
+        width: 100%;
+      }
+    }
+  }
+}

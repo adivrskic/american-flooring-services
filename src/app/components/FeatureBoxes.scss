@@ -1,7 +1,7 @@
 @import '../../styles/variables';
 
 .feature-boxes {
-  height: calc(100vh - 86.5px);
+  min-height: calc(100vh - 86.5px);
   text-align: center;
   padding: $padding-md;
   background-color: $bg;

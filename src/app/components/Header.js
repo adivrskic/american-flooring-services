@@ -88,12 +88,12 @@ const Header = () => {
           <a href="/contact" className="contact-button">Contact Us</a>
         </nav>
         <button className="hamburger" onClick={toggleMenu}>
-          {isMenuOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+          {isMenuOpen ? <FaTimes className="mobile" size={20} /> : <FaBars size={20} />}
         </button>
         {isMenuOpen && (
           <div className="menu-overlay" onClick={toggleMenu}>
             <ul className="overlay-nav">
-              <li><Link href="/services">Services</Link></li>
+              <li><Link href="/products">Products</Link></li>
               <li><Link href="/portfolio">Portfolio</Link></li>
               <li><Link href="/markets">Markets</Link></li>
               <li><Link href="/about">About Us</Link></li>
@@ -106,18 +106,19 @@ const Header = () => {
                 onMouseEnter={() => setHovered({ ...hovered, phone: true })}
                 onMouseLeave={() => setHovered({ ...hovered, phone: false })}
               >
-                <FaPhone size={20} />
+                <FaPhone className="mobile"  size={20} />
               </a>
               {hovered.phone && <Tooltip text="Call: +1 (770) 445-5955" />}
             </div>
             <div className="icon-wrapper">
               <a
                 href="https://maps.google.com/?q=783+Metromont+Rd.+Hiram,+GA+30141"
+                target="_blank"
                 className={`address-link ${isScrolled ? 'scrolled' : ''}`}
                 onMouseEnter={() => setHovered({ ...hovered, location: true })}
                 onMouseLeave={() => setHovered({ ...hovered, location: false })}
               >
-                <FaMapMarkerAlt size={20} />
+                <FaMapMarkerAlt className="mobile" size={20} />
               </a>
               {hovered.location && <Tooltip text="783 Metromont Rd. Hiram, GA 30141" />}
             </div>
