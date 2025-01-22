@@ -99,28 +99,30 @@ const Header = () => {
               <li><Link href="/about">About Us</Link></li>
               <li><Link href="/contact">Contact Us</Link></li>
             </ul>
-            <div className="icon-wrapper">
-              <a
-                href="tel:+17704455955"
-                className={`contact-link ${isScrolled ? 'scrolled' : ''}`}
-                onMouseEnter={() => setHovered({ ...hovered, phone: true })}
-                onMouseLeave={() => setHovered({ ...hovered, phone: false })}
-              >
-                <FaPhone className="mobile"  size={20} />
-              </a>
-              {hovered.phone && <Tooltip text="Call: +1 (770) 445-5955" />}
-            </div>
-            <div className="icon-wrapper">
-              <a
-                href="https://maps.google.com/?q=783+Metromont+Rd.+Hiram,+GA+30141"
-                target="_blank"
-                className={`address-link ${isScrolled ? 'scrolled' : ''}`}
-                onMouseEnter={() => setHovered({ ...hovered, location: true })}
-                onMouseLeave={() => setHovered({ ...hovered, location: false })}
-              >
-                <FaMapMarkerAlt className="mobile" size={20} />
-              </a>
-              {hovered.location && <Tooltip text="783 Metromont Rd. Hiram, GA 30141" />}
+            <div className="mobile-buttons">
+              <div className="icon-wrapper">
+                <a
+                  href="tel:+17704455955"
+                  className={`contact-link ${isScrolled ? 'scrolled' : ''}`}
+                  onMouseEnter={() => setHovered({ ...hovered, phone: true })}
+                  onMouseLeave={() => setHovered({ ...hovered, phone: false })}
+                >
+                  <FaPhone className="mobile"  size={20} />
+                </a>
+                {hovered.phone && <Tooltip text="Call: +1 (770) 445-5955" />}
+              </div>
+              <div className="icon-wrapper">
+                <a
+                  href="https://maps.google.com/?q=783+Metromont+Rd.+Hiram,+GA+30141"
+                  target="_blank"
+                  className={`address-link ${isScrolled ? 'scrolled' : ''}`}
+                  onMouseEnter={() => setHovered({ ...hovered, location: true })}
+                  onMouseLeave={() => setHovered({ ...hovered, location: false })}
+                >
+                  <FaMapMarkerAlt className="mobile" size={20} />
+                </a>
+                {hovered.location && <Tooltip text="783 Metromont Rd. Hiram, GA 30141" />}
+              </div>
             </div>
           </div>
         )}

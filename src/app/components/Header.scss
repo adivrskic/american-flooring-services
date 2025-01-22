@@ -6,11 +6,11 @@
   top: 0;
   left: 0;
   right: 0;
-  padding: 10px 20px;
+  padding: $padding-xs $padding-lg;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease-in-out;
   z-index: 1000;
 
   .container {
@@ -23,9 +23,9 @@
   .logo {
     img {
       height: 60px;
-      min-width: 233px;
-      filter: brightness(0) invert(1);
-      transition: all 0.2s ease;
+      min-width: 233px; // keeps ratio
+      filter: brightness(0) invert(1); // makes it white
+      transition: all 0.2s ease-in-out;
 
       &.scrolled {
         filter: initial;
@@ -58,7 +58,7 @@
   }
 
   .nav-links li {
-    color: #fff;
+    color: $text-light;
   }
 
   .nav-links li.active a {
@@ -67,10 +67,10 @@
 
   .nav-links a {
     text-decoration: none;
-    font-weight: 600;
+    font-weight: bold;
     font-size: $text-sm;
     transition: color 0.2s ease-in-out;
-    color: #fff;
+    color: $text-light;
 
     &:hover {
       color: $primary;
@@ -82,7 +82,7 @@
     color: $text-dark;
     font-size: $text-sm;
     transition: color 0.2s ease-in-out;
-    color: #fff;
+    color: $text-light;
     position: relative;
     display: flex;
 
@@ -97,9 +97,7 @@
 
   .contact-button {
     background-color: $primary;
-    color: white;
-    padding: 15px 20px;
-    border-radius: 3px;
+    color: $text-light;
     font-size: $text-sm;
     text-decoration: none;
     display: inline-block;
@@ -108,14 +106,14 @@
     transition: background-color 0.2s ease;
 
     &:hover {
-      background-color: darken($primary, 10%);
+      background-color: darken($primary, 5%);
     }
   }
 
   /* Scroll effect */
   &.scrolled {
     background-color: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
 
     .hamburger svg {
       color: $text-dark;
@@ -132,50 +130,83 @@
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 1100;
+    z-index: 1001;
 
-    @media (max-width: 1080px) {
+    @media (max-width: 1180px) {
       display: block;
 
       svg {
         color: $text-light;
-        font-size: $text-md;
+        height: 30px;
+        width: 30px;
       }
     }
   }
 
   .menu-overlay {
     position: fixed;
-    top: 0;
+    top: -100%;
+
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: $primary;
-    opacity: 0.95;
+    background: linear-gradient(to bottom, #93143A 50%, rgba(0, 0, 0, 0));
     z-index: 1000;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    animation: slideDown .5s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
 
     .icon-wrapper {
       margin-top: $padding-md;
+      border: 1px solid $text-light;
+      padding: $padding-xs $padding-sm;
+      border-radius: 4px;
+      // border-radius: 999px;
+      svg {
+        height: 30px;
+        width: 30px;
+      }
+    }
+
+    .address-link svg {
+      margin-top: 4px;
+    }
+    .mobile-buttons {
+      display: flex;
+      gap: $padding-md;
+      opacity: 0;
+      transform: translateY(-50px);
+      animation:fadeIn .3s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+      animation-delay: 0.6s;
     }
 
     .overlay-nav {
       list-style: none;
       text-align: center;
+      margin-top: $padding-lg;
+      display: flex;
+      flex-direction: column;
+      gap: $padding-md;
 
       li a {
         display: block;
         text-decoration: none;
-        color: #fff;
+        color: $text-light;
         font-size: $text-md;
-        margin: 10px 0;
         text-transform: uppercase;
+        opacity: 0;
+        transform: translateY(-50px);
+        animation:fadeIn .3s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
 
         &:hover {
           color: $primary;
+        }
+      }
+
+      @for $i from 1 through 10 {
+        li:nth-child(#{$i}) a {
+          animation-delay: calc(0.4s + 0.05s * ($i - 1));
         }
       }
     }
@@ -213,8 +244,9 @@
   color: $text-light;
 }
 
-@media (max-width: 1080px) {
+@media (max-width: 1180px) {
   .header {
+    padding: $padding-xs $padding-sm;
     .nav-links {
       display: none; // Hide default nav on small screens
     }
@@ -230,3 +262,16 @@
   }
 }
 
+
+@keyframes slideDown {
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

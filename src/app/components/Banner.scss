@@ -55,16 +55,16 @@
   }
 
   &__button {
-    padding: 15px 20px;
+    padding: $padding-xs $padding-sm;
     font-size: $text-sm;
     font-weight: bold;
     text-transform: uppercase;
-    color: #fff;
+    color: $text-light;
     background-color: $primary; /* Button color */
     border: 1px solid $primary;
-    border-radius: 3px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease-in-out;
 
     &--alt {
       background-color: transparent;

@@ -33,16 +33,16 @@
   }
 
   &__button {
-    padding:15px 20px;
+    padding:$padding-xs $padding-sm;
     font-size: $text-sm;
     font-weight: bold;
     text-transform: uppercase;
-    color: #fff;
+    color: $text-light;
     background-color: $secondary; /* Button color */
     border: none;
-    border-radius: 3px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.3s ease-in-out;
 
     &:hover {
       background-color: darken($secondary, 10%); /* Darker color on hover */

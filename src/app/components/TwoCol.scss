@@ -73,6 +73,6 @@
 
 @media (max-width: 600px) {
   .two-column-layout {
-    min-height: calc(100vh - 71.5px);
+    min-height: fit-content;
   }
 }
