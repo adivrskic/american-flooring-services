@@ -1,0 +1,74 @@
+@import '../../styles/variables';
+
+.meet-the-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: $padding-md;
+  // background-color: darken($bg, 10%);
+
+  .heading {
+    font-size: $text-lg;
+    margin-bottom: $padding-md;
+    color: $text-dark;
+    text-transform: uppercase;
+  }
+
+  .subheading {
+    font-size: $text-md;
+    margin-bottom: $padding-lg;
+    max-width: 960px;
+    text-align: center;
+  }
+
+  .team-gallery {
+    display: flex;
+    justify-content: space-between; // Ensures even spacing across the row
+    width: 100%;
+    gap: $padding-md;
+
+    .team-member {
+      position: relative;
+      width: 25%; // Each team member takes up 25% of the row
+      height: 500px;
+      overflow: hidden;
+      border-radius: 3px;
+
+      .member-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+        color: #fff;
+        text-align: center;
+        padding: $padding-md;
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      &:hover {
+        .member-image {
+          transform: scale(1.04);
+        }
+
+        .overlay {
+          opacity: 1;
+        }
+      }
+
+      .member-name {
+        font-size: $text-md;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+    }
+  }
+}

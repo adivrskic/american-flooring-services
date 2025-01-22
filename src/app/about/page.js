@@ -1,6 +1,7 @@
 
 import TwoCol from '../components/TwoCol';
 import HeaderList from '../components/HeaderList';
+import MeetTheTeam from '../components/MeetTheTeam';
 
 const AboutPage = () => {
   return (
@@ -20,6 +21,7 @@ const AboutPage = () => {
           'Commercial Installation Management (FCICA)',
         ]}
       />
+      <MeetTheTeam />
     </>
   );
 };

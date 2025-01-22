@@ -1,11 +1,13 @@
 
+import FeatureBoxes from "../components/FeatureBoxes";
+import ImageRow from '../components/ImageRow';
+
 const ProductsPage = () => {
   return (
     <>
-      <h1>Products</h1>
-      <p>This is the products page of your Next.js app.</p>
+      <ImageRow />
+      <FeatureBoxes />
     </>
-
   );
 };
 

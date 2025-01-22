@@ -6,6 +6,10 @@
   width: 100vw; /* Full width */
   overflow: hidden;
 
+  &.margin {
+    margin-top: 86.5px;
+  }
+
   &__item {
     flex: 1; /* All images share equal space by default */
     background-size: cover;

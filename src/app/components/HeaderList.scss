@@ -7,10 +7,12 @@
   justify-content: center;
   padding: $padding-md;
   gap: $padding-md;
+  background-color: darken($bg, 2.5%);
 
   h2 {
     font-size: $text-lg;
     color: $text-dark;
+    text-transform: uppercase;
   }
 
   p {

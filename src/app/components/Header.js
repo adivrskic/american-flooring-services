@@ -26,6 +26,8 @@ const Header = () => {
       }
     };
 
+    handleScroll();
+
     // Check scroll and route on mount
     if (window.scrollY > 0 || pathname !== '/') {
       setIsScrolled(true);
@@ -41,7 +43,6 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  console.log(pathname);
 
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>

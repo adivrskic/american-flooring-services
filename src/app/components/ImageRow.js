@@ -1,5 +1,8 @@
+'use client';
+
 import React from "react";
 import "./ImageRow.scss";
+import { usePathname } from 'next/navigation'; // Use usePathname for App Router
 
 const ImageRow = () => {
   const images = [
@@ -10,8 +13,10 @@ const ImageRow = () => {
     { src: "/images/vinyl.jpg", text: "Vinyl" },
   ];
 
+  const pathname = usePathname(); // Get the current path for App Router
+
   return (
-    <div className="image-row">
+    <div className={pathname === '/products'? 'image-row margin' : 'image-row'}>
       {images.map((image, index) => (
         <div
           key={index}

@@ -22,7 +22,7 @@ const CenteredCTA = () => {
           className="centered-cta__button"
           onClick={() => window.location.href = "/about"}
         >
-          About Us
+          Learn More About Us
         </button>
       </div>
     </div>

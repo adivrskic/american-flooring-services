@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link"; // Import Link from Next.js
 import "./Banner.scss";
 
 const Banner = () => {
@@ -12,13 +13,16 @@ const Banner = () => {
           your unique needs. Join us on a journey of excellence.
         </p>
         <div className="banner__buttons">
-          <button className="banner__button">Learn More</button>
-          <button className="banner__button banner__button--alt">View Portfolio</button>
+          <Link href="/products" className="banner__button">
+            View Products
+          </Link>
+          <Link href="/portfolio" className="banner__button banner__button--alt">
+            View Portfolio
+          </Link>
         </div>
       </div>
     </div>
   );
-
 };
 
 export default Banner;

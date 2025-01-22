@@ -1,0 +1,63 @@
+@import '../../styles/variables';
+
+.feature-boxes {
+  height: calc(100vh - 86.5px);
+  text-align: center;
+  padding: $padding-md;
+  background-color: $bg;
+
+  .heading {
+    font-size: $text-lg;
+    margin-bottom:$padding-md;
+    color: $text-dark;
+    text-transform: uppercase;
+  }
+
+  .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $padding-md;
+  }
+
+  .box {
+    width: 30%; // Adjust to fit 3 boxes per row
+    background-color: #fff;
+    // border: 1px solid $primary;
+    border-radius: 3px;
+    padding: $padding-md;
+    text-align: left;
+
+    .icon {
+      font-size: $text-lg;
+      margin-bottom: $padding-md;
+      // color: #007BFF;
+      color: $primary;
+    }
+
+    .box-title {
+      font-size: $text-md;
+      margin-bottom: $padding-sm;
+      color: $text-dark;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .box-text {
+      font-size:$text-sm;
+      color: $text-dark;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .box {
+      width: 45%; // Adjust to fit 2 boxes per row on smaller screens
+    }
+  }
+
+  @media (max-width: 480px) {
+    .box {
+      width: 100%; // Adjust to fit 1 box per row on very small screens
+    }
+  }
+}

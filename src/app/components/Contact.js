@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import "./Contact.scss";
+import { usePathname } from 'next/navigation'; // Use usePathname for App Router
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -39,8 +40,10 @@ const ContactForm = () => {
     }
   };
 
+  const pathname = usePathname(); // Get the current path for App Router
+
   return (
-    <div className="contact-container">
+    <div className={pathname === '/contact'? 'contact-container margin' : 'contact-container'}>
       <div className="contact-container__image">
         <img src="/images/contact.jpg" alt="Contact Us" />
       </div>
