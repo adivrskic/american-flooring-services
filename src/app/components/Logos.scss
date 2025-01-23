@@ -67,6 +67,20 @@
   }
 }
 
+@media (max-width: 1180px) {
+  .logo-grid {
+
+    h2 {
+      margin: $padding-sm 0 0 0;
+    }
+
+    .logo-grid__images {
+      padding: $padding-sm;
+      margin-bottom: 0;
+    }
+  }
+}
+
 @media (max-width: 1080px) {
   .logo-grid {
     min-height: fit-content;

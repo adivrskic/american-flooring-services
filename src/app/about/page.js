@@ -26,7 +26,7 @@ const AboutPage = () => {
           'Commercial Installation Management (FCICA)',
         ]}
       />
-      <MeetTheTeam />
+      {/* <MeetTheTeam /> */}
     </>
   );
 };

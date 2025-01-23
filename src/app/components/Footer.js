@@ -16,7 +16,7 @@ const Footer = () => {
           <div className="footer__section">
             <h3>Contact Us</h3>
             <p>+1 (770) 445-5955</p>
-            <p>info@company.com</p>
+            <p>alex@americanflooringservices.com</p>
           </div>
           <div className="footer__section">
             <h3>Operating Hours</h3>

@@ -15,7 +15,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transition: flex 0.5s ease, transform 0.5s ease;
+    transition: all 0.3s ease-in-out;
     position: relative;
     cursor: pointer;
 
@@ -23,10 +23,12 @@
       flex: 1.4; /* Increase width by 20% (1 + 0.4 = 1.4) */
       transform: scale(1.1); /* Slight zoom for emphasis */
       transform-origin: center;
+      filter: brightness(1);
     }
 
     &:not(:hover) {
       flex: 0.9; /* Reduce width of non-hovered items */
+      filter: brightness(0.7);
     }
   }
 

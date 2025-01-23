@@ -98,6 +98,10 @@
 }
 
 @media (max-width: 1180px) {
+  .contact-container {
+    min-height: initial;
+  }
+  
   .contact-container__form {
     padding: $padding-sm;
   }

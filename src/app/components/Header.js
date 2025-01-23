@@ -72,7 +72,7 @@ const Header = () => {
             >
               <FaPhone size={20} />
             </a>
-            {hovered.phone && <Tooltip text="Call: +1 (770) 445-5955" />}
+            <Tooltip text="Call: +1 (770) 445-5955" />
           </div>
           <div className="icon-wrapper">
             <a
@@ -83,7 +83,7 @@ const Header = () => {
             >
               <FaMapMarkerAlt size={20} />
             </a>
-            {hovered.location && <Tooltip text="783 Metromont Rd. Hiram, GA 30141" />}
+            <Tooltip text="783 Metromont Rd. Hiram, GA 30141" />
           </div>
           <a href="/contact" className="contact-button">Contact Us</a>
         </nav>

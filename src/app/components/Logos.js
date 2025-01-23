@@ -13,7 +13,7 @@ const logos = [
 const LogoGrid = () => {
   return (
     <div className="logo-grid">
-      <h2>Brands we work with</h2>
+      <h2>Our brand partners</h2>
       <div className="logo-grid__images">
         {logos.map((logo, index) => (
           <div className="logo-grid__item" key={index}>

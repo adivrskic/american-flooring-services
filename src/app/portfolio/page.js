@@ -1,46 +1,53 @@
-import Slideshow from "../components/Slideshow";
+import ImageRow from "../components/ImageRow";
 
 export const metadata = {
   title: 'Portfolio - American Flooring Services',
   description: 'Our residential and commercial work portfolio.',
 };
 
+const images = [
+  { src: "/images/studenthousing.jpg", text: "Student Housing" },
+  { src: "/images/multifamily.jpg", text: "Multi Family" },
+  { src: "/images/assistedliving.jpg", text: "Senior Hospitality" },
+];
+
 const slides = [
   {
-    mainImage: { src: '/images/floor1.jpg', alt: 'Flooring 1' },
+    mainImage: { src: '/images/studenthousing.jpg', alt: 'Student Housing' },
     gallery: [
       { src: '/images/floor1.jpg', alt: 'Gallery 1' },
       { src: '/images/floor2.jpg', alt: 'Gallery 2' },
       { src: '/images/floor3.jpg', alt: 'Gallery 3' },
     ],
-    header: 'Modern Hardwood Flooring',
-    text: 'This premium hardwood flooring brings elegance and durability to your home.',
+    header: 'Student Housing',
+    text: 'Designed to withstand the demands of high-traffic areas, our flooring solutions for student housing combine durability with modern aesthetics to create inviting, functional spaces.',
   },
   {
-    mainImage: { src: '/images/floor4.jpg', alt: 'Flooring 2' },
+    mainImage: { src: '/images/multifamily.jpg', alt: 'Multi Family Homes' },
     gallery: [
       { src: '/images/floor4.jpg', alt: 'Gallery 4' },
       { src: '/images/floor5.jpg', alt: 'Gallery 5' },
       { src: '/images/floor6.jpg', alt: 'Gallery 6' },
     ],
-    header: 'Luxury Vinyl Plank',
-    text: 'Perfect for a modern look with exceptional water resistance.',
+    header: 'Multi Family Homes',
+    text: 'Our flooring options for multi-family homes provide the perfect blend of style and practicality, offering water resistance, easy maintenance, and a modern finish for shared spaces.',
   },
   {
-    mainImage: { src: '/images/floor7.jpg', alt: 'Flooring 3' },
+    mainImage: { src: '/images/assistedliving.jpg', alt: 'Senior Hospitality Centers' },
     gallery: [
       { src: '/images/floor7.jpg', alt: 'Gallery 7' },
       { src: '/images/floor8.jpg', alt: 'Gallery 8' },
       { src: '/images/floor9.jpg', alt: 'Gallery 9' },
     ],
-    header: 'Classic Tile Designs',
-    text: 'Add a timeless aesthetic to your spaces with our high-quality tiles.',
+    header: 'Senior Hospitality Centers',
+    text: 'Tailored for senior living environments, our flooring enhances safety and comfort while delivering timeless beauty and long-lasting performance for hospitality spaces.',
   },
+  
 ];
 
 const PortfolioPage = () => {
   return (
-    <Slideshow slides={slides} />
+    <ImageRow images={images} slides={slides} />
   );
 };
 

@@ -78,6 +78,12 @@
   }
 }
 
+@media (max-width: 1180px) {
+  .banner {
+    padding: 0 $padding-sm;
+  }
+}
+
 
 @media (max-width: 1080px) {
   .banner {
