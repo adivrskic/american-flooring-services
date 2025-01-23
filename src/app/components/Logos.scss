@@ -8,7 +8,7 @@
 
   h2 {
     text-align: center;
-    margin: $padding-md 0;
+    margin: $padding-lg 0;
     font-size: $text-lg;
     text-transform: uppercase;
   }
@@ -17,7 +17,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: $padding-md; /* Space between logos */
-    margin-bottom: $padding-md;
+    margin-bottom: $padding-lg;
     padding: 0 $padding-lg;
   }
 

@@ -78,14 +78,15 @@
     }
 
     .submit-button {
-      padding: 10px 20px;
+      padding: $padding-xs $padding-sm;
       background-color: $secondary;
       text-transform: uppercase;
-      color: #fff;
+      color: $text-light;
       border: none;
-      border-radius: 3px;
+      border-radius: 4px;
       font-size: $text-sm;
       cursor: pointer;
+      font-weight: bold;
       transition: background-color 0.2s;
       width: fit-content;
 
@@ -93,6 +94,12 @@
         background-color: darken($secondary, 10%);
       }
     }
+  }
+}
+
+@media (max-width: 1180px) {
+  .contact-container__form {
+    padding: $padding-sm;
   }
 }
 

@@ -22,9 +22,7 @@ const Slideshow = ({ slides }) => {
   const currentSlide = slides[currentIndex];
 
   return (
-    <div className="slideshow">
-      {/* Left Arrow */}
-      <FaChevronCircleLeft className="arrow left-arrow" onClick={handlePrev} />
+    <div className="slideshow">      
 
       {/* Main Image Section */}
       <div className="main-image">
@@ -53,11 +51,12 @@ const Slideshow = ({ slides }) => {
         <div className="description">
           <h2>{currentSlide.header}</h2>
           <p>{currentSlide.text}</p>
+          <div className='arrows'>
+            <FaChevronCircleLeft className="arrow left-arrow" onClick={handlePrev} />
+            <FaChevronCircleRight className="arrow right-arrow" onClick={handleNext} />
+          </div>
         </div>
-      </div>
-
-      {/* Right Arrow */}
-      <FaChevronCircleRight className="arrow right-arrow" onClick={handleNext} />
+      </div>      
     </div>
   );
 };
