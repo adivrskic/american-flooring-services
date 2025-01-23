@@ -3,6 +3,11 @@ import TwoCol from '../components/TwoCol';
 import HeaderList from '../components/HeaderList';
 import MeetTheTeam from '../components/MeetTheTeam';
 
+export const metadata = {
+  title: 'About Us - American Flooring Services',
+  description: 'Learn more about our journey as a flooring company.',
+};
+
 const AboutPage = () => {
   return (
     <>

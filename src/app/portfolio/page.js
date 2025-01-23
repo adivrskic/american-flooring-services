@@ -1,5 +1,10 @@
 import Slideshow from "../components/Slideshow";
 
+export const metadata = {
+  title: 'Portfolio - American Flooring Services',
+  description: 'Our residential and commercial work portfolio.',
+};
+
 const slides = [
   {
     mainImage: { src: '/images/floor1.jpg', alt: 'Flooring 1' },
