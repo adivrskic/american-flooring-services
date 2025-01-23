@@ -5,8 +5,8 @@ const logos = [
   "/images/mohawk.png",
   "/images/shaw.png",
   "/images/floorfolio.png",
-  "/images/daltile.png",
-  "/images/emsertile.jpg",
+  "/images/daltile.avif",
+  "/images/emsertile.webp",
   "/images/haines.png",
 ];
 

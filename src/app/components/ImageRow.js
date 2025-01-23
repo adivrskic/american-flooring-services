@@ -9,8 +9,8 @@ const ImageRow = () => {
     { src: "/images/carpettile.jpg", text: "Carpet Tile" },
     { src: "/images/carpet.jpg", text: "Carpet" },
     { src: "/images/tile.jpg", text: "Tile" },
-    { src: "/images/laminate.jpg", text: "Laminate" },
-    { src: "/images/vinyl.jpg", text: "Vinyl" },
+    { src: "/images/laminate.webp", text: "Laminate" },
+    { src: "/images/vinyl.webp", text: "Vinyl" },
   ];
 
   const pathname = usePathname(); // Get the current path for App Router
