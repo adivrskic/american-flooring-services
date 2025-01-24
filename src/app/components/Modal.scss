@@ -11,18 +11,18 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  animation: fadeIn 0.3s ease-in-out forwards;
+  animation: fadeIn 0.2s ease-in-out forwards;
 }
 
 .modal-content {
   background: white;
   padding: 20px;
-  border-radius: 4px;
+  border-radius: $border-radius;
   position: relative;
   width: 95vw;
   height: 95vh;
   overflow-y: scroll;
-  animation: scaleUp 0.3s ease-in-out forwards;
+  animation: scaleUp 0.2s ease-in-out forwards;
 }
 
 .modal-close {
@@ -34,6 +34,15 @@
   font-size: 24px;
   cursor: pointer;
   z-index: 1000;
+  border-radius: 999px;
+  background: $text-dark;
+  color: $text-light;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-close:hover {
