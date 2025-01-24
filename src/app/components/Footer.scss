@@ -6,13 +6,9 @@
   font-family: Arial, sans-serif;
 
   &__logo {
-    // flex: 1;
     display: flex;
-    // align-items: center;
 
     img {
-      height: 60px;
-      // height: auto;
       filter: brightness(0) invert(1);
     }
   }
@@ -38,18 +34,10 @@
 
   &__section {
     padding: 0 $padding-sm;
-
-    h3 {
-      margin-bottom: $padding-sm;
+    
+    h3, p {
+      color: $text-light;
       font-size: $text-sm;
-      color: #fff;
-      text-transform: uppercase;
-    }
-
-    p {
-      margin: 0;
-      line-height: 1.5;
-      color: #fff;
     }
   }
 
@@ -61,8 +49,8 @@
     margin-top: $padding-md;
 
     p {
-      margin: 0;
-      color:#fff;
+      color: $text-light;
+      font-size: $text-sm;
     }
   }
 }

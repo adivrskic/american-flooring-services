@@ -7,9 +7,9 @@ const CenteredCTA = () => {
   return (
     <div className="centered-cta">
       <div className="centered-cta__content">
-        <h1 className="centered-cta__title">
+        <h2 className="centered-cta__title">
           The American Flooring Advantage
-        </h1>
+        </h2>
         <p className="centered-cta__subtitle">
           As a company deeply rooted in the world of flooring, we take immense
           pride in every step we take, from the first consultation to the final
@@ -19,7 +19,7 @@ const CenteredCTA = () => {
           a time.
         </p>
         <button
-          className="centered-cta__button"
+          className="button button--secondary"
           onClick={() => window.location.href = "/about"}
         >
           Learn More About Us

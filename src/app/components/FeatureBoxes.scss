@@ -10,13 +10,7 @@
   padding: $padding-lg;
   background-color: $bg;
   box-sizing: border-box;
-
-  .heading {
-    font-size: $text-lg;
-    margin-bottom:$padding-md;
-    color: $text-dark;
-    text-transform: uppercase;
-  }
+  gap: $padding-md;
 
   .box-container {
     display: flex;
@@ -26,58 +20,33 @@
   }
 
   .box {
-    width: calc(33% - 25px); // Adjust to fit 3 boxes per row
-    background-color: #fff;
-    // border: 1px solid $primary;
-    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    width: calc(33% - 25px);
+    background-color: $text-light;
+    border-radius: $border-radius;
     padding: $padding-md;
     text-align: left;
+    gap: $padding-sm;
 
     .icon {
       font-size: $text-lg;
-      margin-bottom: $padding-md;
-      // color: #007BFF;
       color: $primary;
     }
-
-    .box-title {
-      font-size: $text-md;
-      margin-bottom: $padding-sm;
-      color: $text-dark;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-    .box-text {
-      font-size:$text-sm;
-      color: $text-dark;
-    }
   }
-
-  @media (max-width: 768px) {
-    // .feat.box {
-    //   width: 45%; // Adjust to fit 2 boxes per row on smaller screens
-    // }
-  }
-
-
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1228px) {
   .feature-boxes {
     padding: $padding-sm;
+    gap: $padding-sm;
 
     .box-container {
       gap: $padding-sm;
     }
 
     .box {
-      width: calc(50% - 15px); 
+      width: 100%;
     }
-  }
-}
-@media (max-width: 480px) {
-  .feature-boxes .box {
-    width: 100%; // Adjust to fit 1 box per row on very small screens
   }
 }

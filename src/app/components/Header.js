@@ -15,7 +15,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hovered, setHovered] = useState({ phone: false, location: false });
 
-  const pathname = usePathname(); // Get the current path for App Router
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,7 +58,7 @@ const Header = () => {
         </div>
         <nav className={`main-nav ${isMenuOpen ? 'open' : ''}`}>
           <ul className={`nav-links ${isScrolled ? 'scrolled' : ''}`}>
-            <li className={pathname === '/products'? 'active' : ''}><Link href="/products">Products</Link></li>
+            <li className={pathname === '/products'? 'active' : ''}><Link href="/products">Products & Services</Link></li>
             <li className={pathname === '/portfolio' ? 'active' : ''}><Link href="/portfolio">Portfolio</Link></li>
             <li className={pathname === '/markets' ? 'active' : ''}><Link href="/markets">Markets</Link></li>
             <li className={pathname === '/about' ? 'active' : ''}><Link href="/about">About Us</Link></li>
@@ -85,7 +85,7 @@ const Header = () => {
             </a>
             <Tooltip text="783 Metromont Rd. Hiram, GA 30141" />
           </div>
-          <a href="/contact" className="contact-button">Contact Us</a>
+          <a href="/contact" className="button">Contact Us</a>
         </nav>
         <button className="hamburger" onClick={toggleMenu}>
           {isMenuOpen ? <FaTimes className="mobile" size={20} /> : <FaBars size={20} />}
@@ -93,7 +93,7 @@ const Header = () => {
         {isMenuOpen && (
           <div className="menu-overlay" onClick={toggleMenu}>
             <ul className="overlay-nav">
-              <li><Link href="/products">Products</Link></li>
+              <li><Link href="/products">Products & Services</Link></li>
               <li><Link href="/portfolio">Portfolio</Link></li>
               <li><Link href="/markets">Markets</Link></li>
               <li><Link href="/about">About Us</Link></li>

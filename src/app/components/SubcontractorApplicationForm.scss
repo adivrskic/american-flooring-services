@@ -1,0 +1,103 @@
+@import '../../styles/variables';
+
+.subcontractor-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: $padding-lg;
+  position: relative;
+  overflow: hidden;
+  max-height: 100%; 
+  opacity: 1;
+  gap: $padding-md;
+
+  &.hidden {
+    max-height: 10%; // Only the top 10% of the form is initially visible
+    opacity: 0.5;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  .gradient-overlay {
+    position: absolute;
+    inset: 0;
+    top: 320px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.667), #fff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+
+  .flex {
+    display: flex;
+    gap: $padding-md;
+
+    > fieldset,
+    > label {
+      flex: 1;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-sm;
+    max-height: 150px;
+    transition: $animation-fast;
+    overflow: hidden;
+    width: 100%;
+
+    &.visible {
+      max-height: 1300px;
+      transition: $animation-fast;
+    }
+  }
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+@media (max-width: 1228px) {
+  .subcontractor-form {
+    padding: $padding-md $padding-sm;
+  }
+}
+
+@media (max-width: 768px) {
+  .subcontractor-form {
+    & .gradient-overlay {
+      top: 250px;
+    }
+
+    .flex {
+      flex-direction: column;
+      gap: $padding-sm;
+    }
+
+    h2 {
+      font-size: $text-md;
+    }
+
+    form {
+      gap: $padding-sm;
+
+      &.visible {
+        max-height: 2000px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .subcontractor-form {
+    & .gradient-overlay {
+      top: 350px;
+    }
+  }
+}

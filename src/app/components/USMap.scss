@@ -12,6 +12,17 @@
   text-transform: uppercase;
   overflow: hidden;
 
+  .flex {
+    display: flex;
+    flex-direction: column;
+    gap: $padding-sm;
+    align-items: center;
+  }
+
+  &__heading p {
+    text-align: center;
+  }
+
   &__content {
     position: relative;
     display: flex;
@@ -21,17 +32,6 @@
 
   .state-info {
     width: 100%;
-  }
-
-  h2 {
-    font-size: $text-lg;
-    text-align: center;
-  }
-
-  p {
-    font-size: $text-md;
-    color: $primary;
-    text-align: center;
   }
 }
 
@@ -113,20 +113,12 @@
 }
 
 .state-info {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-md;
   text-align: center;
-  // margin: 20px;
   transform: rotateY(30deg) scale(1) skewY(2deg) translate(60px, -60px);
   transform-origin: center;
-}
-
-.state-info h2 {
-  font-size: $text-lg;
-}
-
-.state-info p {
-  font-size: $text-md;
-  color: $primary;
-  margin-bottom: $padding-md;
 }
 
 .info-grid {
@@ -149,13 +141,6 @@
 
 }
 
-.info-box p {
-  font-size: $text-lg;
-  color: $primary;
-  font-weight: bold;
-  margin: 0;
-}
-
 .contact-button {
   background-color: $primary;
   color: $text-light;
@@ -172,9 +157,12 @@
 }
 
 @media (max-width: 1366px) {
+  .us-map {
+    min-height: initial;
+  }
   .us-map__content {
     height: 100%;
-    margin-top: $padding-md;;
+    margin-top: $padding-md;
     flex-direction: column-reverse;
   }
 
@@ -198,8 +186,13 @@
     svg {
       transform: initial;
     }
+  } 
+}
+
+@media (max-width: 1228px) {
+  .state-info {
+    gap: $padding-sm;
   }
-  
 }
 
 

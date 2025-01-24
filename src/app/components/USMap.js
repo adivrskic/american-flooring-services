@@ -47,11 +47,11 @@ const USMap = () => {
                 </div>
               </>
               : 
-              <>
+              <div className="flex">
                 <h2>{"We haven't been to your state yet"}</h2>
                 <p>Get in touch with our expert team today</p>
-                <button className='contact-button'>Contact Us</button>
-              </>
+                <button className='button'>Contact Us</button>
+              </div>
             }
 
           </div>

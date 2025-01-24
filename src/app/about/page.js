@@ -1,7 +1,6 @@
 
 import TwoCol from '../components/TwoCol';
 import HeaderList from '../components/HeaderList';
-import MeetTheTeam from '../components/MeetTheTeam';
 
 export const metadata = {
   title: 'About Us - American Flooring Services',
@@ -26,7 +25,6 @@ const AboutPage = () => {
           'Commercial Installation Management (FCICA)',
         ]}
       />
-      {/* <MeetTheTeam /> */}
     </>
   );
 };

@@ -2,11 +2,10 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import '../styles/globals.scss';
 
-// Global SEO metadata
 export const metadata = {
   title: 'American Flooring Services',
   description: 'Discover expert flooring solutions for residential and commercial spaces.',
-  keywords: 'flooring, commercial flooring, residential flooring, tiling, tile, laminate',
+  keywords: 'flooring, commercial flooring, residential flooring, tiling, tile, laminate, natural stone, multi-family housing, student housing, assisted living facilities',
   openGraph: {
     title: 'American Flooring Services',
     description: 'Discover expert flooring solutions for residential and commercial spaces.',
@@ -29,9 +28,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header /> {/* Include Header here */}
-        <main>{children}</main> {/* Content of each page */}
-        <Footer /> {/* Include Footer here */}
+        <Header />
+        <div className='page-content'>
+          <main>{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

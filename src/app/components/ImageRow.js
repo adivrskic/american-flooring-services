@@ -22,7 +22,6 @@ const ImageRow = ({ images, slides }) => {
     setIsModalOpen(false);
   };
 
-
   return (
     <>
       <div className={pathname === '/products' || pathname === '/portfolio' ? 'image-row margin' : 'image-row'}>
@@ -35,6 +34,14 @@ const ImageRow = ({ images, slides }) => {
           >
             <div className="image-row__overlay">
               <span className="image-row__text">{image.text}</span>
+
+              {image?.subtextItems &&
+                <div className="image-row__subtext">
+                  {image?.subtextItems?.map(item => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </div>
+              }
             </div>
           </div>
         ))}

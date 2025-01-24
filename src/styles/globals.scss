@@ -1,7 +1,5 @@
 @import './variables';
 
-// src/styles/globals.scss
-
 /* Global reset for cross-browser consistency */
 *,
 *::before,
@@ -21,6 +19,7 @@ body {
 a {
   text-decoration: none;
   color: inherit; /* Make links inherit text color */
+  animation: cubic-bezier(0.895, 0.03, 0.685, 0.22)
 }
 
 ul, ol {
@@ -34,7 +33,6 @@ table {
 
 img {
   max-width: 100%; /* Ensure images are responsive */
-  height: auto;
 }
 
 button,
@@ -56,8 +54,136 @@ body {
   font-family: Arial, sans-serif;
 }
 
-button,
-a.contact-button {
-  border-radius: 4px;
+h2 {
+  font-size: $text-lg;
+  text-align: center;
+  color: $text-dark;
+  text-transform: uppercase;
+
+  @media (max-width: 768px) {
+    font-size: $text-md;
+  }
+}
+
+h3 {
+  font-size: $text-md;
+  color: $text-dark;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+p {
+  line-height: 1.5;
+  font-size: $text-md;
+  color: lighten($text-dark, 50%);
+  font-weight: lighter;
+}
+
+button.button,
+a.button {
+  text-transform: uppercase;
   padding: $padding-xs $padding-sm;
+  font-size: $text-sm;
+  font-weight: bold;
+  color: $text-light;
+  background-color: $primary;
+  border: 1px solid $primary;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: $animation-fast;
+  width: fit-content;
+
+  &:hover {
+    background-color: darken($primary, 10%); /* Darker color on hover */
+    border: 1px solid darken($primary, 10%);
+  }
+
+  &--alt {
+    background-color: transparent;
+
+    &:hover {
+      background-color: $primary;
+    }
+  }
+
+  &--secondary {
+    background-color: $secondary;
+    border: 1px solid $secondary;
+
+    &:hover {
+      background-color: darken($secondary, 10%); /* Darker color on hover */
+      border: 1px solid darken($secondary, 10%);
+    }
+  }
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color: $text-dark;
+  text-transform: uppercase;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: $padding-xs;
+  border-radius: $border-radius;
+  background-color: darken($bg, 5%);
+  font-size: $text-md;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+form .error {
+  margin-top: $padding-xs;
+  color: $primary;
+  font-size: $text-sm;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+
+  legend {
+    display: block;
+    font-weight: bold;
+    color: $text-dark;
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: $padding-xs;
+  }
+
+  label {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $padding-xs;
+    font-weight: normal;
+
+    input[type="checkbox"],
+    input[type="radio"] {
+      width: fit-content;
+      margin-right: $padding-xs;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: $text-md;
+  }
+
+  p {
+    font-size: $text-sm;
+  }
+
+  button.button,
+  a.button {
+    font-size: $text-sm;
+  }
 }

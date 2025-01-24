@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import "./Contact.scss";
-import { usePathname } from 'next/navigation'; // Use usePathname for App Router
+import Image from "next/image"; // Import Image from Next.js
+import { usePathname } from 'next/navigation';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -40,64 +41,79 @@ const ContactForm = () => {
     }
   };
 
-  const pathname = usePathname(); // Get the current path for App Router
+  const pathname = usePathname();
 
   return (
     <div className={pathname === '/contact'? 'contact-container margin' : 'contact-container'}>
       <div className="contact-container__image">
-        <img src="/images/contact.jpg" alt="Contact Us" />
+        <Image 
+          src="/images/contact.jpg"
+          alt="Contact our team"
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+        />
       </div>
       <div className="contact-container__form">
         <h2>Contact Us</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-            {errors.name && <span className="error">{errors.name}</span>}
+            <label htmlFor="name">
+              Name
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+            </label>
+            {errors.name && <span cla
+            ssName="error">{errors.name}</span>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="phone">Phone Number</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-            />
+            <label htmlFor="phone">
+              Phone Number
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+              />
+            </label>
             {errors.phone && <span className="error">{errors.phone}</span>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
+            <label htmlFor="email">
+              Email
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </label>
             {errors.email && <span className="error">{errors.email}</span>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="comments">Comments</label>
-            <textarea
-              id="comments"
-              name="comments"
-              value={formData.comments}
-              onChange={handleChange}
-            ></textarea>
+            <label htmlFor="comments">
+              Comments
+              <textarea
+                id="comments"
+                name="comments"
+                value={formData.comments}
+                onChange={handleChange}
+              ></textarea>
+            </label>
             {errors.comments && <span className="error">{errors.comments}</span>}
           </div>
 
-          <button type="submit" className="submit-button">Submit</button>
+          <button type="submit" className="button button--secondary">Submit</button>
         </form>
       </div>
     </div>

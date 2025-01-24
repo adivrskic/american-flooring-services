@@ -4,22 +4,19 @@ import ImageRow from './components/ImageRow';
 import GoogleMap from './components/GoogleMap';
 import Logos from './components/Logos';
 import Contact from './components/Contact';
-
-const images = [
-  { src: "/images/carpettile.jpg", text: "Carpet Tile" },
-  { src: "/images/carpet.jpg", text: "Carpet" },
-  { src: "/images/tile.jpg", text: "Tile" },
-  { src: "/images/naturalstone.webp", text: "Natural Stone" },
-  { src: "/images/vinyl.webp", text: "Vinyl" },
-];
+import SubcontractorApplicationForm from './components/SubcontractorApplicationForm';
+import FeatureBoxes from './components/FeatureBoxes';
+import { productImages, work } from '../data';
 
 export default function HomePage() {
   return (
     <div>
       <Banner />
       <CTA />
-      <ImageRow images={images} />
+      <ImageRow images={productImages} />
+      <SubcontractorApplicationForm />
       <GoogleMap />
+      <FeatureBoxes features={work} link linkHref={'/portfolio'} />
       <Logos />
       <Contact />
     </div>

@@ -81,6 +81,7 @@
       h2 {
         font-size: $text-lg;
         text-transform: uppercase;
+        text-align: left;
       }
 
       p {
@@ -131,9 +132,6 @@
 
 @media (max-width: 600px) {
   .slideshow {
-    min-height: calc(100vh - 71.5px);
-    margin-top: 71.5px;
-
     .right-section .description {
       h2 {
         font-size: $text-md;

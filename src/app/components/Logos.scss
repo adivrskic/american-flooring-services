@@ -6,13 +6,6 @@
   height: calc(100vh - 86.5px); /* Full screen height */
   box-sizing: border-box;
 
-  h2 {
-    text-align: center;
-    margin: $padding-lg 0;
-    font-size: $text-lg;
-    text-transform: uppercase;
-  }
-
   .logo-grid__images {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -67,7 +60,7 @@
   }
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1228px) {
   .logo-grid {
 
     h2 {
@@ -77,6 +70,7 @@
     .logo-grid__images {
       padding: $padding-sm;
       margin-bottom: 0;
+      gap: $padding-sm;
     }
   }
 }
@@ -84,10 +78,6 @@
 @media (max-width: 1080px) {
   .logo-grid {
     min-height: fit-content;
-
-    h2 {
-      font-size: $text-md;
-    }
 
     .logo-grid__images {
       grid-template-columns: repeat(2, 1fr);

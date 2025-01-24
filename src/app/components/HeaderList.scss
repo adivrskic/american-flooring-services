@@ -9,15 +9,7 @@
   gap: $padding-md;
   background-color: $bg;
 
-  h2 {
-    font-size: $text-lg;
-    color: $text-dark;
-    text-transform: uppercase;
-    text-align: center;
-  }
-
   p {
-    font-size: $text-md;
     color: $primary;
     text-transform: uppercase;
   }
@@ -27,8 +19,8 @@
     margin: 0;
 
     svg {
-      min-width: 50px;
-      height: 50px;
+      min-width: 30px;
+      height: 30px;
       color: $primary;
     }
 
@@ -43,8 +35,13 @@
   }
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1228px) {
   .header-list {
     padding: $padding-sm;
+    gap: $padding-sm;
+
+    ul li {
+      font-size: $text-sm;
+    }
   }
 }

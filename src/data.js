@@ -1,3 +1,5 @@
+import { FaTools, FaFastForward, FaTree, FaLock, FaPaintRoller, FaPhone } from "react-icons/fa";
+
 export const states = {
   GA: {
     name: "Georgia",
@@ -120,3 +122,108 @@ export const states = {
     residentialProjects: 90,
   },
 };
+
+export const productImages = [
+  { src: "/images/carpettile.jpg", text: "Carpet Tile", subtextItems: [
+    'Square', 'Plank', 'Eco-friendly', 'High-traffic', 'Sound absorbing'
+  ] },
+  { src: "/images/carpet.jpg", text: "Carpet", subtextItems: [
+    'Plush', 'Berber', 'Patterned', 'Outdoor', 'Commercial'
+  ] },
+  { src: "/images/tile.jpg", text: "Tile", subtextItems: [
+    'Ceramic', 'Porcelain', 'Hexagonal'
+  ]},
+  { src: "/images/naturalstone.webp", text: "Natural Stone", subtextItems: [
+    'Marble', 'Granite', 'Travertine', 'Slate', 'Limestone'
+  ] },
+  { src: "/images/vinyl.webp", text: "Vinyl", subtextItems: [
+    'LVP', 'LVT', 'Sheet Vinyl', 'Waterproof'
+  ] },
+];
+
+export const projectImages = [
+  { src: "/images/studenthousing.jpg", text: "Student Housing" },
+  { src: "/images/multifamily.jpg", text: "Multi Family" },
+  { src: "/images/assistedliving.jpg", text: "Senior Hospitality" },
+];
+
+export const projectSlides = [
+  {
+    mainImage: { src: '/images/studenthousing.jpg', alt: 'Student Housing' },
+    gallery: [
+      { src: '/images/floor1.jpg', alt: 'Gallery 1' },
+      { src: '/images/floor2.jpg', alt: 'Gallery 2' },
+      { src: '/images/floor3.jpg', alt: 'Gallery 3' },
+    ],
+    header: 'Student Housing',
+    text: 'Designed to withstand the demands of high-traffic areas, our flooring solutions for student housing combine durability with modern aesthetics to create inviting, functional spaces.',
+  },
+  {
+    mainImage: { src: '/images/multifamily.jpg', alt: 'Multi Family Homes' },
+    gallery: [
+      { src: '/images/floor4.jpg', alt: 'Gallery 4' },
+      { src: '/images/floor5.jpg', alt: 'Gallery 5' },
+      { src: '/images/floor6.jpg', alt: 'Gallery 6' },
+    ],
+    header: 'Multi Family Homes',
+    text: 'Our flooring options for multi-family homes provide the perfect blend of style and practicality, offering water resistance, easy maintenance, and a modern finish for shared spaces.',
+  },
+  {
+    mainImage: { src: '/images/assistedliving.jpg', alt: 'Senior Hospitality Centers' },
+    gallery: [
+      { src: '/images/floor7.jpg', alt: 'Gallery 7' },
+      { src: '/images/floor8.jpg', alt: 'Gallery 8' },
+      { src: '/images/floor9.jpg', alt: 'Gallery 9' },
+    ],
+    header: 'Senior Hospitality Centers',
+    text: 'Tailored for senior living environments, our flooring enhances safety and comfort while delivering timeless beauty and long-lasting performance for hospitality spaces.',
+  },
+];
+
+export const services = [
+  {
+    icon: <FaTools />,
+    title: 'Quality Tools',
+    description: 'Our tools are built to last and ensure top-notch performance.',
+  },
+  {
+    icon: <FaFastForward />,
+    title: 'Fast Service',
+    description: 'We provide quick and reliable service for all your needs.',
+  },
+  {
+    icon: <FaTree />,
+    title: 'Eco-Friendly',
+    description: 'Committed to sustainable and environmentally friendly solutions.',
+  },
+  {
+    icon: <FaLock />,
+    title: 'Secure',
+    description: 'Your safety and security are our top priorities.',
+  },
+  {
+    icon: <FaPaintRoller />,
+    title: 'Custom Designs',
+    description: 'Tailored designs to meet your unique requirements.',
+  },
+  {
+    icon: <FaPhone />,
+    title: '24/7 Support',
+    description: 'We’re here to assist you anytime, day or night.',
+  },
+];
+
+export const work = [
+  {
+    title: 'Student Housing',
+    description: 'Designed to handle the high-traffic demands of student living spaces, our flooring solutions offer durability and style. From common areas to dormitories, we ensure easy maintenance and long-lasting performance.',
+  },
+  {
+    title: 'Multi Family',
+    description: 'Our flooring options for multi-family residences combine modern aesthetics with robust functionality. We specialize in solutions that enhance shared spaces while withstanding everyday wear and tear, perfect for apartments and condos.',
+  },
+  {
+    title: 'Senior Hospitality',
+    description: 'We provide flooring tailored to senior living environments, focusing on safety, comfort, and elegance. Our materials include slip-resistant surfaces and warm designs, ensuring a welcoming and secure atmosphere.',
+  }
+];

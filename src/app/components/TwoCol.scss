@@ -36,7 +36,6 @@
     }
   }
 
-  // Responsive design for smaller screens
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
@@ -53,19 +52,35 @@
   }
 }
 
+@media (max-width: 1228px) {
+  .two-column-layout {
+    height: calc(100vh - 71.5px);
+    margin-top: 71.5px;
+  }
+}
+
 @media (max-width: 960px) {
   .two-column-layout {
     .image-column {
-      display: none;
+      position: absolute;
+      z-index: -1;
+      filter: brightness(0.667);
     }
 
-    .text-column {      
+    .text-column {     
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+
       h1 {
         text-align: center;
+        color: $text-light;
       }
   
       p {
         text-align: center;
+        color: $text-light;
       }
     }
   }

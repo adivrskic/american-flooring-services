@@ -1,16 +1,25 @@
 import React from "react";
 import "./Footer.scss";
+import Image from "next/image";
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__top">
         <div className="footer__logo">
-          <img src="/images/americanflooringlogo.png" alt="Company Logo" />
+          <Image 
+            src="/images/americanflooringlogo.png"
+            alt="Contact our team"
+            layout="fixed"
+            width={230}
+            height={60}
+            loading="lazy"
+            quality={100}
+          />
         </div>
         <div className="footer__info">
           <div className="footer__section">
-            <h3>Our Address</h3>
+            <h3>Office</h3>
             <p>783 Metromont Rd.<br />Hiram, GA 30141</p>
           </div>
           <div className="footer__section">
