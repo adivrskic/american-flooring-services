@@ -53,7 +53,7 @@
     width: 100%;
 
     &.visible {
-      max-height: 1300px;
+      max-height: 1400px;
       transition: $animation-fast;
     }
   }
@@ -88,7 +88,7 @@
       gap: $padding-sm;
 
       &.visible {
-        max-height: 2000px;
+        max-height: 2400px;
       }
     }
   }
