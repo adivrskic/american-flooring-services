@@ -14,7 +14,7 @@ const CenteredCTA = () => {
           As a company deeply rooted in the world of flooring, we take immense
           pride in every step we take, from the first consultation to the final
           installation. We understand that the choice of flooring can make or
-          break the aesthetics and functionality of a space. That's why we are
+          break the aesthetics and functionality of a space. We are
           driven by a passion to help you bring your vision to life, one tile at
           a time.
         </p>
