@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color $animation-fast;
   z-index: 1000;
 
   .container {
@@ -25,7 +25,7 @@
       height: 60px;
       min-width: 233px; // keeps ratio
       filter: brightness(0) invert(1); // makes it white
-      transition: all 0.2s ease-in-out;
+      transition: $animation-fast;
 
       &.scrolled {
         filter: initial;
@@ -145,19 +145,21 @@
   }
 
   .menu-overlay {
+    display: none;
     position: fixed;
-    padding-right: 40px;
     top: 0;
-    left: 100%;
+    left: 0;
     width: 100%;
     height: 100%;
     background: $primary;
     z-index: 1000;
     display: flex;
+    opacity: 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: slideOut .6s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+    // pointer-events: none;
+    animation: fadeIn 0.2s forwards;
 
     .icon-wrapper {
       margin-top: $padding-md;
@@ -166,8 +168,8 @@
       border-radius: 999px;
       
       svg {
-        height: 30px;
-        width: 30px;
+        height: 25px;
+        width: 25px;
       }
     }
 
@@ -179,8 +181,8 @@
       gap: $padding-md;
       opacity: 0;
       transform: translateY(-50px);
-      animation:fadeIn .3s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
-      animation-delay: 0.6s;
+      animation:fadeIn .2s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+      animation-delay: 0.4s;
     }
 
     .overlay-nav {
@@ -199,7 +201,7 @@
         text-transform: uppercase;
         opacity: 0;
         transform: translateY(-50px);
-        animation:fadeIn .3s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
+        animation:fadeIn .2s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
 
         &:hover {
           color: $primary;
@@ -208,7 +210,7 @@
 
       @for $i from 1 through 10 {
         li:nth-child(#{$i}) a {
-          animation-delay: calc(0.4s + 0.05s * ($i - 1));
+          animation-delay: calc(0.2s + 0.05s * ($i - 1));
         }
       }
     }
@@ -265,9 +267,10 @@
 }
 
 
-@keyframes slideOut {
+@keyframes fadeIn {
   100% {
-    left: 40px;
+    opacity: 1;
+    pointer-events: all;
   }
 }
 

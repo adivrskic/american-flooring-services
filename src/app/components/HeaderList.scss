@@ -19,8 +19,8 @@
     margin: 0;
 
     svg {
-      min-width: 30px;
-      height: 30px;
+      min-width: 25px;
+      height: 25px;
       color: $primary;
     }
 
@@ -42,6 +42,7 @@
 
     ul li {
       font-size: $text-sm;
+      margin-bottom: $padding-sm;
     }
   }
 }

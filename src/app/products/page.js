@@ -5,7 +5,7 @@ import { productImages, services } from '../../data';
 
 export const metadata = {
   title: 'Products - American Flooring Services',
-  description: 'Our products and services we offer.',
+  description: 'Our products and the services we offer.',
 };
 
 const ProductsPage = () => {

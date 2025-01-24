@@ -97,7 +97,15 @@
 @media (max-width: 480px) {
   .subcontractor-form {
     & .gradient-overlay {
-      top: 350px;
+      top: 310px;
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .subcontractor-form {
+    & .gradient-overlay {
+      top: 360px;
     }
   }
 }

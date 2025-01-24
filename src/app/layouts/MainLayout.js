@@ -1,4 +1,3 @@
-// layouts/MainLayout.js
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 

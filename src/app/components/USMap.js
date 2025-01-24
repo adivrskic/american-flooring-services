@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { states } from '../../data';
+import Link from 'next/link';
 import './USMap.scss';
 
 const USMap = () => {
@@ -50,10 +51,9 @@ const USMap = () => {
               <div className="flex">
                 <h2>{"We haven't been to your state yet"}</h2>
                 <p>Get in touch with our expert team today</p>
-                <button className='button'>Contact Us</button>
+                <Link href={'/contact'} className='button'>Contact Us</Link>
               </div>
             }
-
           </div>
         </div>
 
