@@ -7,10 +7,17 @@
   margin: 0 auto;
   overflow: hidden;
   min-height: calc(100vh - 86.5px);
+  gap: $padding-md;
 
   &.margin {
     margin-top: 86.5px;
   }
+
+  p {
+    text-align: center;
+    margin: $padding-md 0;
+  }
+  
 
   &__image {
     position: relative;
@@ -40,6 +47,10 @@
 @media (max-width: 1228px) {
   .contact-container {
     min-height: initial;
+
+    p {
+      margin: $padding-sm 0;
+    }
   }
 
   .contact-container__form {

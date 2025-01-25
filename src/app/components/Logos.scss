@@ -6,6 +6,10 @@
   height: calc(100vh - 86.5px); /* Full screen height */
   box-sizing: border-box;
 
+  h2 {
+    margin: $padding-md 0;
+  }
+
   .logo-grid__images {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -64,7 +68,7 @@
   .logo-grid {
 
     h2 {
-      margin: $padding-sm 0 0 0;
+      margin: $padding-sm 0 ;
     }
 
     .logo-grid__images {

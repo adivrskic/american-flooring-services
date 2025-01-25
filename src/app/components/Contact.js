@@ -31,15 +31,29 @@ const ContactForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Form submitted:", formData);
-      // Reset the form
-      setFormData({ name: "", phone: "", email: "", comments: "" });
-      setErrors({});
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+        const result = await response.json();
+        console.log('res: ', result);
+        if (response.ok) {
+          console.log(result.message);
+          setFormData({ name: "", phone: "", email: "", comments: "" });
+        } else {
+          console.error(result.error);
+        }
+      } catch (err) {
+        console.error("Failed to submit form:", err);
+      }
     }
   };
+  
 
   const pathname = usePathname();
 
@@ -56,6 +70,7 @@ const ContactForm = () => {
       </div>
       <div className="contact-container__form">
         <h2>Contact Us</h2>
+        <p>Have questions or need assistance? Fill out the form below, and our expert team will get back to you as soon as possible!</p>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">
