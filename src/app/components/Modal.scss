@@ -21,8 +21,14 @@
   position: relative;
   width: 95vw;
   height: 95vh;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
   overflow-y: scroll;
   animation: scaleUp 0.2s ease-in-out forwards;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .modal-close {

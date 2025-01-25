@@ -66,6 +66,7 @@ const Header = () => {
           <div className="icon-wrapper">
             <a
               href="tel:+17704455955"
+              target="_blank"
               className={`contact-link ${isScrolled ? 'scrolled' : ''}`}
               onMouseEnter={() => setHovered({ ...hovered, phone: true })}
               onMouseLeave={() => setHovered({ ...hovered, phone: false })}
@@ -77,6 +78,7 @@ const Header = () => {
           <div className="icon-wrapper">
             <a
               href="https://maps.google.com/?q=783+Metromont+Rd.+Hiram,+GA+30141"
+              target="_blank"
               className={`address-link ${isScrolled ? 'scrolled' : ''}`}
               onMouseEnter={() => setHovered({ ...hovered, location: true })}
               onMouseLeave={() => setHovered({ ...hovered, location: false })}

@@ -1,6 +1,7 @@
 'use client'; // Mark as client component
 
 import React from "react";
+import Link from 'next/link'
 import "./CTA.scss";
 
 const CenteredCTA = () => {
@@ -18,12 +19,12 @@ const CenteredCTA = () => {
           driven by a passion to help you bring your vision to life, one tile at
           a time.
         </p>
-        <button
+        <Link
           className="button button--secondary"
-          onClick={() => window.location.href = "/about"}
+          href="/about"
         >
           Learn More About Us
-        </button>
+        </Link>
       </div>
     </div>
   );

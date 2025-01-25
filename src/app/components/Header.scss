@@ -164,12 +164,12 @@
     .icon-wrapper {
       margin-top: $padding-md;
       background-color: $text-light;
-      padding: $padding-sm $padding-sm;
+      padding: $padding-xs $padding-xs;
       border-radius: 999px;
       
       svg {
-        height: 30px;
-        width: 30px;
+        height: 25px;
+        width: 25px;
         color: $primary !important;
       }
     }
@@ -195,7 +195,7 @@
         display: block;
         text-decoration: none;
         color: $text-light;
-        font-size: $text-md;
+        font-size: $text-sm;
         text-transform: uppercase;
         opacity: 0;
         transform: translateY(-50px);

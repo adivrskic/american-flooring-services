@@ -55,6 +55,14 @@
   }
 }
 
+@media (max-width: 1228px) {
+  .footer {
+    &__top {
+      padding: $padding-sm;
+    }
+  }
+}
+
 @media (max-width: 1080px) {
   .footer {
     &__top {

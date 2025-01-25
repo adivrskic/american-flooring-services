@@ -78,15 +78,8 @@
       flex-direction: column;
       gap: $padding-md;
 
-      h2 {
-        font-size: $text-lg;
-        text-transform: uppercase;
+      h2, p {
         text-align: left;
-      }
-
-      p {
-        font-size: $text-md;
-        color: $text-dark;
       }
     }
 
@@ -137,16 +130,6 @@
 
 @media (max-width: 600px) {
   .slideshow {
-    .right-section .description {
-      h2 {
-        font-size: $text-md;
-      }
-
-      p {
-        font-size: $text-sm;
-      }
-    }
-
     .right-section .arrows {
       gap: $padding-sm;
     }
