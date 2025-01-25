@@ -35,7 +35,7 @@ const ContactForm = () => {
     e.preventDefault();
     if (validateForm()) {
       try {
-        const response = await fetch("/api/contact", {
+        const response = await fetch("/.netlify/functions/send-contact-email", { // Update the endpoint to match your Netlify function
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
@@ -53,7 +53,6 @@ const ContactForm = () => {
       }
     }
   };
-  
 
   const pathname = usePathname();
 

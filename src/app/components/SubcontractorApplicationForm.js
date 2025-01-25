@@ -41,10 +41,25 @@ const SubcontractorApplicationForm = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form Submitted:', formData);
-    // Add logic to send data to your API
+    try {
+      const response = await fetch("/.netlify/functions/send-subcontractor-email", { // Update the endpoint to match your Netlify function
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+      console.log('res: ', result);
+      if (response.ok) {
+        console.log(result.message);
+        setFormData({ /* reset form data */ });
+      } else {
+        console.error(result.error);
+      }
+    } catch (err) {
+      console.error("Failed to submit form:", err);
+    }
   };
 
   return (
