@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import "./Contact.scss";
-import Image from "next/image"; // Import Image from Next.js
-import { usePathname } from 'next/navigation';
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -22,11 +22,39 @@ const ContactForm = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.name) newErrors.name = "Name is required.";
-    if (!formData.phone) newErrors.phone = "Phone number is required.";
-    if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email))
-      newErrors.email = "Valid email is required.";
-    if (!formData.comments) newErrors.comments = "Please add your comments.";
+    const phoneRegex = /^[0-9]{10,15}$/; // Validates numeric-only phone numbers (10 to 15 digits)
+    const emailRegex = /^\S+@\S+\.\S+$/; // Simple email regex
+
+    // Name validation
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required.";
+    } else if (formData.name.length > 255) {
+      newErrors.name = "Name cannot exceed 255 characters.";
+    }
+
+    // Phone validation
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required.";
+    } else if (!phoneRegex.test(formData.phone)) {
+      newErrors.phone = "Phone number must be numeric and 10-15 digits.";
+    }
+
+    // Email validation
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required.";
+    } else if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address.";
+    } else if (formData.email.length > 255) {
+      newErrors.email = "Email cannot exceed 255 characters.";
+    }
+
+    // Comments validation
+    if (!formData.comments.trim()) {
+      newErrors.comments = "Comments are required.";
+    } else if (formData.comments.length > 1000) {
+      newErrors.comments = "Comments cannot exceed 1000 characters.";
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -35,13 +63,13 @@ const ContactForm = () => {
     e.preventDefault();
     if (validateForm()) {
       try {
-        const response = await fetch("/.netlify/functions/send-contact-email", { // Update the endpoint to match your Netlify function
+        const response = await fetch("/.netlify/functions/send-contact-email", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
         });
         const result = await response.json();
-        console.log('res: ', result);
+        console.log("res: ", result);
         if (response.ok) {
           console.log(result.message);
           setFormData({ name: "", phone: "", email: "", comments: "" });
@@ -57,9 +85,9 @@ const ContactForm = () => {
   const pathname = usePathname();
 
   return (
-    <div className={pathname === '/contact'? 'contact-container margin' : 'contact-container'}>
+    <div className={pathname === "/contact" ? "contact-container margin" : "contact-container"}>
       <div className="contact-container__image">
-        <Image 
+        <Image
           src="/images/contact.jpg"
           alt="Contact our team"
           layout="fill"
@@ -80,10 +108,10 @@ const ContactForm = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                maxLength="255"
               />
             </label>
-            {errors.name && <span cla
-            ssName="error">{errors.name}</span>}
+            {errors.name && <span className="error">{errors.name}</span>}
           </div>
 
           <div className="form-group">
@@ -109,6 +137,7 @@ const ContactForm = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                maxLength="255"
               />
             </label>
             {errors.email && <span className="error">{errors.email}</span>}
@@ -122,6 +151,7 @@ const ContactForm = () => {
                 name="comments"
                 value={formData.comments}
                 onChange={handleChange}
+                maxLength="1000"
               ></textarea>
             </label>
             {errors.comments && <span className="error">{errors.comments}</span>}

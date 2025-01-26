@@ -121,13 +121,18 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
   width: 100%;
   padding: $padding-xs;
   border-radius: $border-radius;
   background-color: darken($bg, 5%);
-  font-size: $text-md;
+  font-size: $text-sm;
   font-weight: 200;
+}
+
+select {
+  border: none;
 }
 
 textarea {
