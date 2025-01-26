@@ -1,7 +1,7 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-exports.handler = async (event, context) => {
-  if (event.httpMethod !== "POST") {
+export const handler = async (event, context) => {
+  if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
       body: JSON.stringify({ message: 'Only POST requests are allowed' }),
@@ -10,12 +10,12 @@ exports.handler = async (event, context) => {
 
   const { name, phone, email, comments } = JSON.parse(event.body);
 
-  const API_KEY = process.env.BREVO_API_KEY; // Store your Brevo API key in the environment variables
+  const API_KEY = process.env.BREVO_API_KEY;
   const url = 'https://api.brevo.com/v3/smtp/email';
 
   const emailData = {
-    sender: { email: 'adivrskic123@gmail.com' },  // Replace with your sender email
-    to: [{ email: 'adivrskic123@gmail.com' }],    // Replace with the recipient email
+    sender: { email: 'adivrskic123@gmail.com' },
+    to: [{ email: 'adivrskic123@gmail.com' }],
     subject: `New contact form submission from ${name}`,
     htmlContent: `
       <h2>New Message</h2>

@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== "POST") {
@@ -14,8 +14,8 @@ exports.handler = async (event, context) => {
   const url = 'https://api.brevo.com/v3/smtp/email';
 
   const emailData = {
-    sender: { email: 'your-email@example.com' },  // Replace with your sender email
-    to: [{ email: 'recipient@example.com' }],    // Replace with the recipient email
+    sender: { email: 'adivrskic123@gmail.com' },  // Replace with your sender email
+    to: [{ email: 'adivrskic123@gmail.com' }],    // Replace with the recipient email
     subject: `New Subcontractor Application from ${formData.firstName} ${formData.lastName}`,
     htmlContent: `
       <h2>New Subcontractor Application</h2>
