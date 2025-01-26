@@ -16,20 +16,27 @@ exports.handler = async (event, context) => {
   const emailData = {
     sender: { email: 'adivrskic123@gmail.com' },  // Replace with your sender email
     to: [{ email: 'adivrskic123@gmail.com' }],    // Replace with the recipient email
-    subject: `New Subcontractor Application from ${formData.firstName} ${formData.lastName}`,
+    subject: `AmericanFlooringServices.com - New Subcontractor Application from ${formData.firstName} ${formData.lastName}`,
     htmlContent: `
-      <h2>New Subcontractor Application</h2>
-      <p><strong>First Name:</strong> ${formData.firstName}</p>
-      <p><strong>Last Name:</strong> ${formData.lastName}</p>
-      <p><strong>Company Name:</strong> ${formData.companyName}</p>
-      <p><strong>Business Phone:</strong> ${formData.businessPhone}</p>
-      <p><strong>Email:</strong> ${formData.email}</p>
-      <p><strong>Years in Trade:</strong> ${formData.yearsInTrade}</p>
-      <p><strong>Products Installed:</strong> ${formData.productsInstalled.join(', ')}</p>
-      <p><strong>General Liabilities:</strong> ${formData.generalLiabilities}</p>
-      <p><strong>Workers Comp:</strong> ${formData.workersComp}</p>
-      <p><strong>Willing to Obtain Insurance:</strong> ${formData.willingToObtain}</p>
-      <p><strong>Additional Comments:</strong> ${formData.additionalComments}</p>
+      <html>
+        <body style="font-family: Arial, sans-serif; line-height: 1.6;">
+          <h2 style="color: #93143A;">New Subcontractor Application Submission</h2>
+          <p><strong>First Name:</strong> ${formData.firstName}</p>
+          <p><strong>Last Name:</strong> ${formData.lastName}</p>
+          <p><strong>Company Name:</strong> ${formData.companyName}</p>
+          <p><strong>Business Phone:</strong> ${formData.businessPhone}</p>
+          <p><strong>Email:</strong> ${formData.email}</p>
+          <p><strong>Years in Trade:</strong> ${formData.yearsInTrade}</p>
+          <p><strong>Products Installed:</strong> ${formData.productsInstalled.join(', ')}</p>
+          <p><strong>General Liabilities:</strong> ${formData.generalLiabilities}</p>
+          <p><strong>Workers Comp:</strong> ${formData.workersComp}</p>
+          <p><strong>Willing to Obtain Insurance:</strong> ${formData.willingToObtain}</p>
+          <p><strong>Additional Comments:</strong> ${formData.additionalComments}</p>
+          <footer style="margin-top: 20px; font-size: 12px; color: #333;">
+            Sent from Your Website
+          </footer>
+        </body>
+      </html>
     `,
   };
 

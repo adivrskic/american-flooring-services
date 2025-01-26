@@ -16,13 +16,20 @@ export const handler = async (event, context) => {
   const emailData = {
     sender: { email: 'adivrskic123@gmail.com' },
     to: [{ email: 'adivrskic123@gmail.com' }],
-    subject: `New contact form submission from ${name}`,
+    subject: `AmericanFlooringServices.com - New contact form submission from ${name}`,
     htmlContent: `
-      <h2>New Message</h2>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Phone:</strong> ${phone}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Comments:</strong> ${comments}</p>
+    <html>
+      <body style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <h2 style="color: #93143A;">New Contact Form Submission</h2>
+        <p><b>Name:</b> ${name}</p>
+        <p><b>Phone:</b> ${phone}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Message:</b> ${comments}</p>
+        <footer style="margin-top: 20px; font-size: 12px; color: #333;">
+          Sent from Your Website
+        </footer>
+      </body>
+    </html>
     `,
   };
 

@@ -143,7 +143,7 @@ export const productImages = [
 
 export const projectImages = [
   { src: "/images/studenthousing.jpg", text: "Student Housing" },
-  { src: "/images/multifamily.jpg", text: "Multi Family" },
+  { src: "/images/multifamily.webp", text: "Multi Family" },
   { src: "/images/assistedliving.jpg", text: "Senior Hospitality" },
 ];
 
