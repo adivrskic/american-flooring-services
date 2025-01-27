@@ -21,7 +21,7 @@ const Banner = () => {
         <h1 className="banner__title">American Flooring Services</h1>
         <p className="banner__text">
           Discover our wide range of services and solutions tailored to meet
-          your unique needs. <br />Join us on a journey of excellence.
+          your unique needs. Join us on a journey of excellence.
         </p>
         <div className="banner__buttons">
           <Link href="/products" className="button">

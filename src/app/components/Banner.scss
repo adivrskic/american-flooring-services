@@ -39,7 +39,7 @@
   }
 
   &__text {
-    max-width: 960px;
+    max-width: 860px;
     color: $text-light;
   }
 
@@ -80,6 +80,7 @@
 
     &__buttons {
       flex-direction: column;
+      align-items: center;
     }
   }
 }
