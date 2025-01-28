@@ -1,7 +1,5 @@
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import fetch from 'node-fetch';
-import fs from 'fs';
-import path from 'path';
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== "POST") {
@@ -44,7 +42,7 @@ exports.handler = async (event, context) => {
   try {
     // Generate the PDF
     const pdfBytes = await generateSubcontractorPDF(formData);
-    const pdfBase64 = pdfBytes.toString('base64');
+    const pdfBase64 = pdfBytes.toString('base64'); // Convert to Base64
 
     // Prepare email data with attachment
     const emailData = {
@@ -74,8 +72,9 @@ exports.handler = async (event, context) => {
       `,
       attachment: [
         {
-          content: pdfBase64, // Attach PDF as base64
           name: `subcontractor_application_${formData.firstName}_${formData.lastName}.pdf`,
+          content: pdfBase64, // Attach PDF as Base64
+          contentType: 'application/pdf', // Specify the content type
         },
       ],
     };
