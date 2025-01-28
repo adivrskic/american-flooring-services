@@ -19,6 +19,14 @@
     }
   }
 
+  h2 {
+    margin-bottom: $padding-md;
+  }
+  
+  p {
+    text-align: center;
+  }
+
   .text-column {
     flex: 1;
     padding: $padding-md;
@@ -45,6 +53,10 @@
   .two-column-layout {
     height: calc(100vh - 71.5px);
     margin-top: 71.5px;
+
+    h2 {
+      margin-bottom: $padding-sm;
+    }
   }
 }
 

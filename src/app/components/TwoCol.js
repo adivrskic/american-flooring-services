@@ -9,7 +9,7 @@ const TwoCol = ({ imageSrc, heading, subheading }) => {
         <img src={imageSrc} alt={heading} />
       </div>
       <div className="text-column">
-        <h1>{heading}</h1>
+        <h2>{heading}</h2>
         <p>{subheading}</p>
       </div>
     </div>
