@@ -1,5 +1,5 @@
+import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import fetch from 'node-fetch';
-import PDFDocument from 'pdfkit';
 import fs from 'fs';
 import path from 'path';
 
@@ -16,32 +16,35 @@ exports.handler = async (event, context) => {
   const url = 'https://api.brevo.com/v3/smtp/email';
 
   // Helper function to generate the PDF
-  const generateSubcontractorPDF = (formData) => {
-    const doc = new PDFDocument();
-    const tempDir = '/tmp'; // Temporary directory for serverless environments
-    const filePath = path.join(tempDir, `subcontractor_application_${Date.now()}.pdf`);
-    const writeStream = fs.createWriteStream(filePath);
+  const generateSubcontractorPDF = async (formData) => {
+    const pdfDoc = await PDFDocument.create();
+    const page = pdfDoc.addPage([600, 700]); // Define page size (width x height)
+    const timesRomanFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
-    return new Promise((resolve, reject) => {
-      doc.pipe(writeStream);
+    const { firstName, lastName } = formData;
 
-      // Add PDF content
-      doc.fontSize(18).text('Subcontractor Application Form', { align: 'center' }).moveDown();
-      doc.fontSize(12);
-      for (const [key, value] of Object.entries(formData)) {
-        const fieldValue = Array.isArray(value) ? value.join(', ') : value; // Handle arrays
-        doc.text(`${key}: ${fieldValue || 'N/A'}`);
-      }
-      doc.end();
+    // Add content to the PDF
+    page.setFont(timesRomanFont);
+    page.setFontSize(20);
+    page.drawText('Subcontractor Application Form', { x: 50, y: 650, color: rgb(0.2, 0.4, 0.8) });
 
-      writeStream.on('finish', () => resolve(filePath));
-      writeStream.on('error', reject);
-    });
+    page.setFontSize(12);
+    let y = 620; // Starting position
+    for (const [key, value] of Object.entries(formData)) {
+      const fieldValue = Array.isArray(value) ? value.join(', ') : value || 'N/A';
+      page.drawText(`${key}: ${fieldValue}`, { x: 50, y });
+      y -= 20; // Move to the next line
+    }
+
+    // Serialize the PDF to bytes
+    const pdfBytes = await pdfDoc.save();
+    return pdfBytes;
   };
 
   try {
     // Generate the PDF
-    const pdfFilePath = await generateSubcontractorPDF(formData);
+    const pdfBytes = await generateSubcontractorPDF(formData);
+    const pdfBase64 = pdfBytes.toString('base64');
 
     // Prepare email data with attachment
     const emailData = {
@@ -71,8 +74,8 @@ exports.handler = async (event, context) => {
       `,
       attachment: [
         {
-          content: fs.readFileSync(pdfFilePath, { encoding: 'base64' }), // Read the PDF as base64
-          name: `subcontractor_application_${formData.firstName}_${formData.lastName}_${Date.now()}.pdf`,
+          content: pdfBase64, // Attach PDF as base64
+          name: `subcontractor_application_${formData.firstName}_${formData.lastName}.pdf`,
         },
       ],
     };
@@ -88,9 +91,6 @@ exports.handler = async (event, context) => {
     });
 
     const responseBody = await response.json();
-
-    // Clean up temporary file
-    fs.unlinkSync(pdfFilePath);
 
     if (response.ok) {
       return {

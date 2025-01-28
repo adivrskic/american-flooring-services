@@ -23,17 +23,6 @@
     flex: 1;
     padding: $padding-md;
 
-    h1 {
-      font-size:$text-lg;
-      margin-bottom: $padding-md;
-      color: $text-dark;
-      text-transform: uppercase;
-    }
-
-    p {
-      font-size:$text-md;
-      color: $text-dark;
-    }
   }
 
   @media (max-width: 768px) {
