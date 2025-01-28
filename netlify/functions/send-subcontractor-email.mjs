@@ -36,15 +36,14 @@ exports.handler = async (event, context) => {
 
     // Serialize the PDF to bytes
     const pdfBytes = await pdfDoc.save();
-    return pdfBytes;
+    return Buffer.from(pdfBytes).toString('base64'); // Convert to Base64
   };
 
   try {
-    // Generate the PDF
-    const pdfBytes = await generateSubcontractorPDF(formData);
-    const pdfBase64 = pdfBytes.toString('base64'); // Convert to Base64
+    // Generate the PDF as Base64
+    const pdfBase64 = await generateSubcontractorPDF(formData);
 
-    // Prepare email data with attachment
+    // Prepare email data with the correctly structured attachment
     const emailData = {
       sender: { email: 'adivrskic123@gmail.com' }, // Replace with your sender email
       to: [{ email: 'adivrskic123@gmail.com' }], // Replace with the recipient email
@@ -73,8 +72,8 @@ exports.handler = async (event, context) => {
       attachment: [
         {
           name: `subcontractor_application_${formData.firstName}_${formData.lastName}.pdf`,
-          content: pdfBase64, // Attach PDF as Base64
-          contentType: 'application/pdf', // Specify the content type
+          content: pdfBase64, // Attach the PDF as Base64
+          contentType: 'application/pdf', // Correct content type for PDF
         },
       ],
     };
