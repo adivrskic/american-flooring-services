@@ -1,30 +1,36 @@
-'use client'; // Mark as client component
-
+import { client } from '../../lib/sanity'; // Ensure you have your Sanity client configured
 import React from "react";
-import Link from 'next/link'
+import Link from 'next/link';
 import "./CTA.scss";
 
-const CenteredCTA = () => {
+const CenteredCTA = async () => {
+  const ctaData = await client.fetch(`
+    *[_type == "centeredCTA"][0]
+  `);
+
+  if(!ctaData) return null;
+
   return (
     <div className="centered-cta">
       <div className="centered-cta__content">
-        <h2 className="centered-cta__title">
-          The American Flooring Advantage
-        </h2>
-        <p className="centered-cta__subtitle">
-          As a company deeply rooted in the world of flooring, we take immense
-          pride in every step we take, from the first consultation to the final
-          installation. We understand that the choice of flooring can make or
-          break the aesthetics and functionality of a space. We are
-          driven by a passion to help you bring your vision to life, one tile at
-          a time.
-        </p>
-        <Link
-          className="button button--secondary"
-          href="/about"
-        >
-          Learn More About Us
-        </Link>
+        {ctaData?.title && 
+          <h2 className="centered-cta__title">
+            {ctaData?.title}
+          </h2>
+        }
+        {ctaData?.subtitle && 
+          <p className="centered-cta__subtitle">
+            {ctaData?.subtitle}
+          </p>
+        }
+        {ctaData?.buttonText && 
+          <Link
+            className="button button--secondary"
+            href={ctaData?.buttonLink}
+          >
+            {ctaData?.buttonText}
+          </Link>
+        }
       </div>
     </div>
   );

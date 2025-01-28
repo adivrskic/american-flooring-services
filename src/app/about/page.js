@@ -1,21 +1,25 @@
 import TwoCol from "../components/TwoCol";
 import HeaderList from "../components/HeaderList";
-
+import { client, urlFor } from '../../lib/sanity'; // Sanity client
 export const metadata = {
   title: "About Us - American Flooring Services",
   description: "Learn more about our journey as a flooring company.",
 };
 
-const AboutPage = () => {
+const AboutPage = async () => {
+  const aboutData = await client.fetch(`
+    *[_type == "about"][0] // Fetch the first document of type "about"
+  `);
+
+  const imageUrl = bannerData?.image ? urlFor(bannerData.image).url() : null;
+  
+
   return (
     <>
       <TwoCol
-        imageSrc="/images/team.jpg"
-        heading="Our Story"
-        subheading="
-          With years of experience, we have honed our skills and knowledge to become experts in our field. 
-          We've tackled projects of all sizes and complexities, and our unwavering commitment to quality shines through in every inch of the floors we lay. 
-          What sets us apart is our people. Our team of professionals, from designers to installers, shares a common vision – to deliver flooring solutions that transcend the ordinary and elevate your space to extraordinary."
+        imageSrc={imageUrl}
+        heading={aboutData?.heading}
+        subheading={aboutData?.subheading}
       />
       <HeaderList
         header="Exceeding Expectations since 1999"

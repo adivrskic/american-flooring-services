@@ -1,15 +1,22 @@
-'use client';
-
+import { client, urlFor } from '../../lib/sanity';
 import React from "react";
 import Link from "next/link";
 import Image from "next/image"; // Import Image from Next.js
 import "./Banner.scss";
 
-const Banner = () => {
+const Banner = async () => {
+  const bannerData = await client.fetch(`
+    *[_type == "banner"][0]
+  `);
+
+  console.log(bannerData);
+
+  const imageUrl = bannerData?.image ? urlFor(bannerData.image).url() : '/images/banner.jpg'; // Fallback to default image
+
   return (
     <div className="banner">
       <Image 
-        src="/images/banner.jpg"
+        src={imageUrl}
         alt="Banner Background"
         layout="fill"
         objectFit="cover"
@@ -18,18 +25,20 @@ const Banner = () => {
       />
 
       <div className="banner__content">
-        <h1 className="banner__title">American Flooring Services</h1>
-        <p className="banner__text">
-          Discover our wide range of services and solutions tailored to meet
-          your unique needs. Join us on a journey of excellence.
-        </p>
+        <h1 className="banner__title">{bannerData?.title}</h1>
+        <p className="banner__text">{bannerData?.text}</p>
         <div className="banner__buttons">
-          <Link href="/products" className="button">
-            View Products
-          </Link>
-          <Link href="/portfolio" className="button button--alt">
-            View Portfolio
-          </Link>
+          { bannerData?.button1Link && (
+            <Link href={bannerData.button1Link} className="button">
+              {bannerData?.button1Text}
+            </Link>
+          )}
+          {bannerData?.button2Link && (
+            <Link href={bannerData.button2Link} className="button button--alt">
+              {bannerData?.button2Text}
+            </Link>
+          )}
+
         </div>
       </div>
     </div>
