@@ -87,7 +87,9 @@ const Header = () => {
             </a>
             <Tooltip text="783 Metromont Rd. Hiram, GA 30141" />
           </div>
-          <a href="/contact" className="button">Contact Us</a>
+          <Link className="button" href="/contact">
+            Contact Us
+          </Link>
         </nav>
         <button className="hamburger" onClick={toggleMenu}>
           {isMenuOpen ? <FaTimes className="mobile" size={20} /> : <FaBars size={20} />}
