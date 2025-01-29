@@ -16,7 +16,7 @@ export default async function HomePage() {
   const { components = [] } = pageData || {};
 
   const bannerData = components.find(item => item._type === 'banner');
-  const ctaData = components.find(item => item._type === 'cta');
+  const ctaData = components.find(item => item._type === 'centeredCTA');
   const imageRowData = components.find(item => item._type === 'imageRow');
   const googleMapData = components.find(item => item._type === 'googleMap');
   const featureBoxesData = components.find(item => item._type === 'featureBoxes');

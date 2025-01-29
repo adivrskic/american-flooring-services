@@ -9,9 +9,7 @@ const LogoGrid = ({ logosData }) => {
     <div className="logo-grid">
       <h2>{title}</h2>
       <div className="logo-grid__images">
-        {logos.map((logo, index) => {
-          console.log(logo);
-          
+        {logos.map((logo, index) => {          
           const logoUrl = logo?.asset ? urlFor(logo.asset).url() : null;
           const altText = logo?.alt || `Logo ${index + 1}`; 
           

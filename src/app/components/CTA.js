@@ -1,4 +1,3 @@
-import { client } from '../../lib/sanity'; // Ensure you have your Sanity client configured
 import React from "react";
 import Link from 'next/link';
 import "./CTA.scss";
