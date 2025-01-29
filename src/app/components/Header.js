@@ -1,8 +1,9 @@
 'use client'; // Ensure it's a client component
-
+import { urlFor } from '../../lib/sanity';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation'; // Use usePathname for App Router
 import Link from 'next/link';
+import Image from "next/image";
 import { FaPhone, FaMapMarkerAlt, FaBars, FaTimes } from 'react-icons/fa'; // Import icons
 import './Header.scss';
 
@@ -10,7 +11,9 @@ const Tooltip = ({ text }) => {
   return <div className="tooltip">{text}</div>;
 };
 
-const Header = () => {
+const Header = ({ headerData }) => {
+  const imageUrl = headerData?.image ? urlFor(headerData.image).url() : '/images/americanflooringlogo.png'; // Fallback to default image
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [hovered, setHovered] = useState({ phone: false, location: false });
@@ -43,29 +46,34 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container">
         <div className="logo">
           <Link href="/">
-            <img
+            <Image 
               className={`${isScrolled ? 'scrolled' : ''}`}
-              src="/images/americanflooringlogo.png"
+              src={imageUrl}
               alt="American Flooring Services Logo"
+              layout="fixed"
+              width={230}
+              height={60}
+              quality={100}
+              priority
             />
           </Link>
         </div>
         <nav className={`main-nav ${isMenuOpen ? 'open' : ''}`}>
           <ul className={`nav-links ${isScrolled ? 'scrolled' : ''}`}>
-            <li className={pathname === '/products'? 'active' : ''}><Link href="/products">Products & Services</Link></li>
-            <li className={pathname === '/portfolio' ? 'active' : ''}><Link href="/portfolio">Portfolio</Link></li>
-            <li className={pathname === '/markets' ? 'active' : ''}><Link href="/markets">Markets</Link></li>
-            <li className={pathname === '/about' ? 'active' : ''}><Link href="/about">About Us</Link></li>
+            {headerData?.navLinks?.map((link, index) => (
+              <li key={index} className={pathname === link.url ? 'active' : ''}>
+                <Link href={link.url}>{link.title}</Link>
+              </li>
+            ))}
           </ul>
           <div className="icon-wrapper">
             <a
-              href="tel:+17704455955"
+              href={headerData?.phoneLink || 'tel:+17704455955'} // Use phoneLink from headerData
               target="_blank"
               className={`contact-link ${isScrolled ? 'scrolled' : ''}`}
               onMouseEnter={() => setHovered({ ...hovered, phone: true })}
@@ -73,11 +81,11 @@ const Header = () => {
             >
               <FaPhone size={20} />
             </a>
-            <Tooltip text="Call: +1 (770) 445-5955" />
+            <Tooltip text={`Call: ${headerData?.phone || '+1 (770) 445-5955'}`} />
           </div>
           <div className="icon-wrapper">
             <a
-              href="https://maps.google.com/?q=783+Metromont+Rd.+Hiram,+GA+30141"
+              href={headerData?.mapLink || 'https://maps.google.com/?q=783+Metromont+Rd.+Hiram,+GA+30141'} // Use mapLink from headerData
               target="_blank"
               className={`address-link ${isScrolled ? 'scrolled' : ''}`}
               onMouseEnter={() => setHovered({ ...hovered, location: true })}
@@ -85,10 +93,10 @@ const Header = () => {
             >
               <FaMapMarkerAlt size={20} />
             </a>
-            <Tooltip text="783 Metromont Rd. Hiram, GA 30141" />
+            <Tooltip text={headerData?.address || '783 Metromont Rd. Hiram, GA 30141'} />
           </div>
-          <Link className="button" href="/contact">
-            Contact Us
+          <Link className="button" href={headerData?.contactButtonLink || '/contact'}>
+            {headerData?.contactButtonText || 'Contact Us'}
           </Link>
         </nav>
         <button className="hamburger" onClick={toggleMenu}>
@@ -97,27 +105,26 @@ const Header = () => {
         {isMenuOpen && (
           <div className="menu-overlay" onClick={toggleMenu}>
             <ul className="overlay-nav">
-              <li><Link href="/products">Products & Services</Link></li>
-              <li><Link href="/portfolio">Portfolio</Link></li>
-              <li><Link href="/markets">Markets</Link></li>
-              <li><Link href="/about">About Us</Link></li>
-              <li><Link href="/contact">Contact Us</Link></li>
+              {headerData?.mobileMenu?.navLinks?.map((link, index) => (
+                <li key={index}><Link href={link.url}>{link.title}</Link></li>
+              ))}
+              <li><Link href={headerData?.contactButtonLink || '/contact'}>{headerData?.contactButtonText || 'Contact Us'}</Link></li>
             </ul>
             <div className="mobile-buttons">
               <div className="icon-wrapper">
                 <a
-                  href="tel:+17704455955"
+                  href={headerData?.mobileMenu?.phoneLink || 'tel:+17704455955'}
                   className={`contact-link ${isScrolled ? 'scrolled' : ''}`}
                   onMouseEnter={() => setHovered({ ...hovered, phone: true })}
                   onMouseLeave={() => setHovered({ ...hovered, phone: false })}
                 >
-                  <FaPhone className="mobile"  size={20} />
+                  <FaPhone className="mobile" size={20} />
                 </a>
-                {hovered.phone && <Tooltip text="Call: +1 (770) 445-5955" />}
+                {hovered.phone && <Tooltip text={`Call: ${headerData?.mobileMenu?.phone || '+1 (770) 445-5955'}`} />}
               </div>
               <div className="icon-wrapper">
                 <a
-                  href="https://maps.google.com/?q=783+Metromont+Rd.+Hiram,+GA+30141"
+                  href={headerData?.mobileMenu?.mapLink || 'https://maps.google.com/?q=783+Metromont+Rd.+Hiram,+GA+30141'}
                   target="_blank"
                   className={`address-link ${isScrolled ? 'scrolled' : ''}`}
                   onMouseEnter={() => setHovered({ ...hovered, location: true })}
@@ -125,7 +132,7 @@ const Header = () => {
                 >
                   <FaMapMarkerAlt className="mobile" size={20} />
                 </a>
-                {hovered.location && <Tooltip text="783 Metromont Rd. Hiram, GA 30141" />}
+                {hovered.location && <Tooltip text={headerData?.mobileMenu?.address || '783 Metromont Rd. Hiram, GA 30141'} />}
               </div>
             </div>
           </div>

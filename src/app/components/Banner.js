@@ -1,16 +1,10 @@
 import { client, urlFor } from '../../lib/sanity';
 import React from "react";
 import Link from "next/link";
-import Image from "next/image"; // Import Image from Next.js
+import Image from "next/image";
 import "./Banner.scss";
 
-const Banner = async () => {
-  const bannerData = await client.fetch(`
-    *[_type == "banner"][0]
-  `);
-
-  console.log(bannerData);
-
+const Banner = async ({bannerData}) => {
   const imageUrl = bannerData?.image ? urlFor(bannerData.image).url() : '/images/banner.jpg'; // Fallback to default image
 
   return (

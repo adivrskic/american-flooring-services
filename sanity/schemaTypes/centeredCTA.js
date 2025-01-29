@@ -29,4 +29,5 @@ export default {
       initialValue: 'Learn More About Us', // Set default button text
     },
   ],
+  hidden: true,
 };

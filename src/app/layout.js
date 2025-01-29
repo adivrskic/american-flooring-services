@@ -1,3 +1,5 @@
+import { client } from '../lib/sanity';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import '../styles/globals.scss';
@@ -24,14 +26,22 @@ export const metadata = {
 };
 
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const headerData = await client.fetch(`
+    *[_type == "header"][0]
+  `);
+
+  const footerData = await client.fetch(`
+    *[_type == "footer"][0]
+  `);
+
   return (
     <html lang="en">
       <body>
-        <Header />
+        <Header headerData={headerData}  />
         <div className='page-content'>
           <main>{children}</main>
-          <Footer />
+          <Footer footerData={footerData}  />
         </div>
       </body>
     </html>

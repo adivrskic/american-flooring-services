@@ -1,3 +1,5 @@
+import { client } from '../lib/sanity';
+
 import Banner from './components/Banner';
 import CTA from './components/CTA';
 import ImageRow from './components/ImageRow';
@@ -6,18 +8,29 @@ import Logos from './components/Logos';
 import Contact from './components/Contact';
 import SubcontractorApplicationForm from './components/SubcontractorApplicationForm';
 import FeatureBoxes from './components/FeatureBoxes';
-import { productImages, work } from '../data';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const pageData = await client.fetch(`
+    *[_type == "page" && slug.current == $slug][0]`, { slug: '/' });
+
+  const { components = [] } = pageData || {};
+
+  const bannerData = components.find(item => item._type === 'banner');
+  const ctaData = components.find(item => item._type === 'cta');
+  const imageRowData = components.find(item => item._type === 'imageRow');
+  const googleMapData = components.find(item => item._type === 'googleMap');
+  const featureBoxesData = components.find(item => item._type === 'featureBoxes');
+  const logosData = components.find(item => item._type === 'logos');
+
   return (
     <div>
-      <Banner />
-      <CTA />
-      <ImageRow images={productImages} />
+      <Banner bannerData={bannerData} />
+      <CTA ctaData={ctaData} />
+      <ImageRow imageRowData={imageRowData}/>
       <SubcontractorApplicationForm />
-      <GoogleMap />
-      <FeatureBoxes features={work} link linkHref={'/portfolio'} />
-      <Logos />
+      <GoogleMap googleMapData={googleMapData} />
+      <FeatureBoxes featureBoxesData={featureBoxesData} />
+      <Logos logosData={logosData} />
       <Contact />
     </div>
   );

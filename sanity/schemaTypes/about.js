@@ -1,7 +1,7 @@
 // schemas/about.js
 export default {
   name: 'about', // Unique identifier for this schema
-  title: 'About Page', // Title shown in Sanity Studio
+  title: 'About', // Title shown in Sanity Studio
   type: 'document', // Sanity document schema
   fields: [
     {
@@ -23,4 +23,5 @@ export default {
       type: 'text', // Subheading text (longer description)
     },
   ],
+  hidden: true,
 };

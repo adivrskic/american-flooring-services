@@ -1,6 +1,14 @@
 import about from './about';
 import banner from './banner';
 import centeredCTA from './centeredCTA';
+import header from './header';
 import footer from './footer';
+import imageRow from './imageRow';
+import googleMap from './googleMap';
+import featureBoxes from './featureBoxes';
+import logos from './logos';
+import page from "./page";
+import twoCol from './twoCol';
+import headerList from './headerList';
 
-export const schemaTypes = [banner, centeredCTA, about, footer];
+export const schemaTypes = [page, banner, logos, headerList, featureBoxes, centeredCTA, googleMap, imageRow, about, twoCol, header, footer];

@@ -3,11 +3,7 @@ import React from "react";
 import Link from 'next/link';
 import "./CTA.scss";
 
-const CenteredCTA = async () => {
-  const ctaData = await client.fetch(`
-    *[_type == "centeredCTA"][0]
-  `);
-
+const CenteredCTA = async ({ ctaData }) => {
   if(!ctaData) return null;
 
   return (

@@ -1,15 +1,10 @@
 import React from "react";
 import Image from "next/image";
-import { client, urlFor } from '../../lib/sanity'; // Sanity client
+import { urlFor } from '../../lib/sanity'; // Sanity client
 import './Footer.scss';
 
-const Footer = async () => {
-  const footerData = await client.fetch(`
-    *[_type == "footer"][0] // Fetch the footer document
-  `);
-
+const Footer = ({ footerData }) => {
   const imageUrl = footerData?.image ? urlFor(footerData.image).url() : '/images/americanflooringlogo.png'; // Fallback to default image
-  
 
   return (
     <footer className="footer">

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import './USMap.scss';
 
 const USMap = () => {
-  const [selectedState, setSelectedState] = useState('GA'); // Default state is "MA"
+  const [selectedState, setSelectedState] = useState('GA');
   const handleStateClick = (e, stateId) => {
     e.preventDefault();
     setSelectedState(stateId);

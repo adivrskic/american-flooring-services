@@ -42,4 +42,5 @@ export default {
       type: 'string', // Text for the second button
     },
   ],
+  hidden: true,
 };
