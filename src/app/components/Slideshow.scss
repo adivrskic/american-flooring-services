@@ -6,8 +6,16 @@
   position: relative;
   height: 100%;
 
+  .arrows {
+    display: flex;
+    gap: $padding-md;
+  }
+
   .arrow {
-    fill: $text-dark;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%);
+    fill: $text-light;
     border: none;
     border-radius: 50%;
     width: 40px;
@@ -19,13 +27,21 @@
     align-items: center;
     z-index: 10;
 
+    &.left-arrow {
+      left: 40px;
+    }
+
+    &.right-arrow {
+      right: 0px;
+    }
+
     &:hover {
       fill: $primary;
     }
   }
 
   .main-image {
-    width: 66.666%;
+    width: 100%;
     height: 100%;
 
     img {
@@ -81,11 +97,6 @@
       h2, p {
         text-align: left;
       }
-    }
-
-    .arrows {
-      display: flex;
-      gap: $padding-md;
     }
   }
 }

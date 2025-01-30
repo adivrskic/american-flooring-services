@@ -7,30 +7,18 @@ export const metadata = {
 };
 
 const AboutPage = async () => {
-  const aboutData = await client.fetch(`
-    *[_type == "about"][0] // Fetch the first document of type "about"
-  `);
+  const pageData = await client.fetch(`
+    *[_type == "page" && slug.current == $slug][0]`, { slug: '/about' });
 
-  const imageUrl = bannerData?.image ? urlFor(bannerData.image).url() : null;
-  
+  const { components = [] } = pageData || {};
+  const twoColData = components.find(item => item._type === 'twoCol');
+  const headerListData = components.find(item => item._type === 'headerList');
+  console.log(twoColData, headerListData);
 
   return (
     <>
-      <TwoCol
-        imageSrc={imageUrl}
-        heading={aboutData?.heading}
-        subheading={aboutData?.subheading}
-      />
-      <HeaderList
-        header="Exceeding Expectations since 1999"
-        subheader="Our certifications"
-        items={[
-          "Ceramic Tile Education Foundation (CTEF)",
-          "Ceramic Tile & Stone (CTS)",
-          "Commercial Flooring Inspection (FCITS)",
-          "Commercial Installation Management (FCICA)",
-        ]}
-      />
+      <TwoCol twoColData={twoColData} />
+      <HeaderList headerListData={headerListData} />
     </>
   );
 };

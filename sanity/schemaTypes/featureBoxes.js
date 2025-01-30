@@ -32,6 +32,14 @@ export default {
               description: "Choose whether to use an image or an SVG file.",
             },
             {
+              name: "backgroundImage",
+              title: "Background Image",
+              type: "image",
+              description: "Upload a PNG, JPG, or WebP icon.",
+              options: { hotspot: true },
+              hidden: ({ parent }) => parent?.iconType !== "image",
+            },
+            {
               name: "iconImage",
               title: "Feature Image",
               type: "image",
@@ -60,6 +68,26 @@ export default {
               title: "Feature Description",
               type: "text",
               description: "Brief description of the feature.",
+            },
+            {
+              name: "images",
+              title: "Project Images",
+              type: "array",
+              of: [
+                {
+                  type: "image",
+                  options: { hotspot: true },
+                  fields: [
+                    {
+                      name: "alt",
+                      title: "Alt Text",
+                      type: "string",
+                      description: "Accessible description of the image.",
+                    },
+                  ],
+                },
+              ],
+              description: "Upload multiple images related to this feature.",
             },
           ],
         },

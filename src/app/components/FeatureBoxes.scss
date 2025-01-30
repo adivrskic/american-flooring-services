@@ -15,23 +15,38 @@
   .box-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     gap: $padding-md;
+    width: 100%;
   }
 
   .box {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: calc(33% - 25px);
+    min-height: 300px;
     background-color: $text-light;
     border-radius: $border-radius;
     padding: $padding-md;
     text-align: left;
     gap: $padding-sm;
+    overflow: hidden;
+
+    &:has(.box-overlay) h3,
+    &:has(.box-overlay) p {
+      color: $text-light;
+      z-index: 1;
+    }
+
+    .box-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.33);
+    }
 
     .icon {
-      font-size: $text-lg;
-      color: $primary;
+      width: 30px;
+      height: 30px;
     }
   }
 }

@@ -16,28 +16,58 @@ exports.handler = async (event, context) => {
   // Helper function to generate the PDF
   const generateSubcontractorPDF = async (formData) => {
     const pdfDoc = await PDFDocument.create();
-    const page = pdfDoc.addPage([600, 700]); // Define page size (width x height)
+    const page = pdfDoc.addPage([600, 800]); // Increased page height for better spacing
     const timesRomanFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
-
-    const { firstName, lastName } = formData;
-
-    // Add content to the PDF
+  
+    // Title
+    const titleColor = rgb(0.577, 0.078, 0.227); // #93143A
     page.setFont(timesRomanFont);
-    page.setFontSize(20);
-    page.drawText('Subcontractor Application Form', { x: 50, y: 650, color: rgb(0.2, 0.4, 0.8) });
-
-    page.setFontSize(12);
-    let y = 620; // Starting position
-    for (const [key, value] of Object.entries(formData)) {
-      const fieldValue = Array.isArray(value) ? value.join(', ') : value || 'N/A';
-      page.drawText(`${key}: ${fieldValue}`, { x: 50, y });
+    page.setFontSize(32);
+    page.drawText('Subcontractor Application Form', { x: 50, y: 750, color: titleColor });
+  
+    // Add section for Personal Information
+    page.setFontSize(18);
+    page.drawText('Personal Information', { x: 50, y: 720, color: rgb(0, 0, 0) });
+  
+    // Add the form data with proper labels
+    page.setFontSize(14);
+    let y = 680; // Starting position
+    const sectionData = [
+      { label: 'First Name:', value: formData.firstName },
+      { label: 'Last Name:', value: formData.lastName },
+      { label: 'Email:', value: formData.email },
+      { label: 'Phone:', value: formData.phone },
+      { label: 'Address:', value: formData.address },
+    ];
+  
+    sectionData.forEach((item) => {
+      const fieldValue = item.value || 'N/A';
+      page.drawText(`${item.label} ${fieldValue}`, { x: 50, y });
       y -= 20; // Move to the next line
-    }
-
+    });
+  
+    // Add section for other relevant information (e.g., experience, services)
+    page.setFontSize(18);
+    page.drawText('Work Experience', { x: 50, y: y - 20, color: rgb(0, 0, 0) });
+  
+    y -= 40; // Add extra space between sections
+    const experienceData = [
+      { label: 'Years of Experience:', value: formData.experienceYears },
+      { label: 'Previous Employers:', value: formData.previousEmployers },
+      { label: 'Services Provided:', value: formData.services },
+    ];
+  
+    experienceData.forEach((item) => {
+      const fieldValue = item.value || 'N/A';
+      page.drawText(`${item.label} ${fieldValue}`, { x: 50, y });
+      y -= 20; // Move to the next line
+    });
+  
     // Serialize the PDF to bytes
     const pdfBytes = await pdfDoc.save();
     return Buffer.from(pdfBytes).toString('base64'); // Convert to Base64
   };
+  
 
   try {
     // Generate the PDF as Base64
