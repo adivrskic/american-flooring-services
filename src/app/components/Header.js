@@ -108,7 +108,6 @@ const Header = ({ headerData }) => {
               {headerData?.mobileMenu?.navLinks?.map((link, index) => (
                 <li key={index}><Link href={link.url}>{link.title}</Link></li>
               ))}
-              <li><Link href={headerData?.contactButtonLink || '/contact'}>{headerData?.contactButtonText || 'Contact Us'}</Link></li>
             </ul>
             <div className="mobile-buttons">
               <div className="icon-wrapper">

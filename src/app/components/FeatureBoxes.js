@@ -24,7 +24,7 @@ const FeatureBoxes = ({ featureBoxesData }) => {
   return (
     <>
       <div className="feature-boxes">
-        <h2>{title + ' Projects' || 'Our Expert Services'}</h2>
+        <h2>{title || 'Our Expert Services'}</h2>
 
         <div className="box-container">
           {features?.map((feature, index) => {
