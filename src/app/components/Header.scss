@@ -145,21 +145,20 @@
   }
 
   .menu-overlay {
-    display: none;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
+    transform: translateX(100%);
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: $primary;
     z-index: 1000;
     display: flex;
-    opacity: 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     // pointer-events: none;
-    animation: fadeIn 0.2s forwards;
+    animation: slideIn 0.2s forwards;
 
     .icon-wrapper {
       margin-top: $padding-md;
@@ -175,21 +174,24 @@
     }
 
     .mobile-buttons {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
       display: flex;
-      gap: $padding-md;
-      opacity: 0;
-      transform: translateY(-50px);
-      animation:fadeIn .2s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
-      animation-delay: 0.4s;
+      flex-direction: column;
     }
 
     .overlay-nav {
+      width: 100%;
+      height: 100%;
       list-style: none;
       text-align: center;
-      margin-top: $padding-lg;
       display: flex;
       flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
       gap: $padding-md;
+      padding: $padding-md;
 
       li a {
         display: block;
@@ -197,18 +199,9 @@
         color: $text-light;
         font-size: $text-sm;
         text-transform: uppercase;
-        opacity: 0;
-        transform: translateY(-50px);
-        animation:fadeIn .2s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
 
         &:hover {
           color: $primary;
-        }
-      }
-
-      @for $i from 1 through 10 {
-        li:nth-child(#{$i}) a {
-          animation-delay: calc(0.2s + 0.05s * ($i - 1));
         }
       }
     }
@@ -265,10 +258,11 @@
 }
 
 
-@keyframes fadeIn {
+@keyframes slideIn {
   100% {
-    opacity: 1;
+    top: 0;
     pointer-events: all;
+    transform: translate(0);
   }
 }
 

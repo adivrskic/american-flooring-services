@@ -113,8 +113,8 @@
       filter: brightness(1) !important;
 
       &:has(.image-row__subtext) {
-        height: 350px; 
-        min-height: 350px;
+        height: 500px; 
+        min-height: 500px;
       }
     }
 
@@ -127,7 +127,7 @@
       padding: $padding-xs;
 
       span {
-        width: calc(50% - 5px);
+        width: 100%;
       }
     }
 

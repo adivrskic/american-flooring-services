@@ -40,8 +40,7 @@
 
     .box-overlay {
       position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.33);
+      background: rgba(0, 0, 0, 0.2);
     }
 
     .icon {
@@ -69,5 +68,7 @@
 @media (max-width: 768px) {
   .feature-boxes .box {
     text-align: center;
+    align-items: center;
+    justify-content: center;
   }
 }

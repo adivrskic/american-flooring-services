@@ -54,6 +54,24 @@
   background-color: $primary;
 }
 
+@media (max-width: 768px) {
+  .modal-content {
+    background: white;
+    border-radius: $border-radius;
+    width: 92.5%;
+    height: 95%;
+    max-width: 100vh;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    overflow-y: scroll;
+    animation: scaleUp 0.2s ease-in-out forwards;
+  
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
