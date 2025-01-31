@@ -67,7 +67,19 @@ export default {
               name: "description",
               title: "Feature Description",
               type: "text",
-              description: "Brief description of the feature.",
+              description: "Description of the feature. (Do not use if using location and number of units)",
+            },
+            {
+              name: "location",
+              title: "Feature Location",
+              type: "text",
+              description: "Location of the feature.",
+            },
+            {
+              name: "numUnits",
+              title: "Feature Number of Units",
+              type: "text",
+              description: "Number of units of the feature.",
             },
             {
               name: "images",

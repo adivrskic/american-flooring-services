@@ -19,18 +19,37 @@
     width: 100%;
   }
 
+  .empty {
+    width: 100%;
+    text-align: center;
+  }
+
   .box {
     position: relative;
     display: flex;
     flex-direction: column;
-    width: calc(33% - 25px);
-    min-height: 300px;
+    justify-content: flex-end;
+    width: calc(33% - 22px);
+    min-height: fit-content;
     background-color: $text-light;
     border-radius: $border-radius;
     padding: $padding-md;
     text-align: left;
-    gap: $padding-sm;
+    gap: $padding-xs;
     overflow: hidden;
+    background-size: cover;
+    cursor: pointer;
+
+    &.has-background {
+      min-height: 320px;
+      padding: $padding-sm;
+    }
+
+    p:has(svg) {
+      display: flex;
+      gap: $padding-xs;
+      align-items: center;
+    }
 
     &:has(.box-overlay) h3,
     &:has(.box-overlay) p {
@@ -40,7 +59,11 @@
 
     .box-overlay {
       position: absolute;
-      background: rgba(0, 0, 0, 0.2);
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.333);
     }
 
     .icon {

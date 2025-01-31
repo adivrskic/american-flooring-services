@@ -6,9 +6,9 @@ import { useState } from 'react';
 import Modal from './Modal';
 import Slideshow from './Slideshow';
 import { urlFor } from '../../lib/sanity';
+import { FaMapMarkerAlt } from 'react-icons/fa'; // Import icons
 
 const FeatureBoxes = ({ featureBoxesData }) => {
-  console.log(featureBoxesData);
   const { title, features, link, linkHref, linkText } = featureBoxesData;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,8 +27,8 @@ const FeatureBoxes = ({ featureBoxesData }) => {
         <h2>{title || 'Our Expert Services'}</h2>
 
         <div className="box-container">
+          {!features?.length && <p className='empty'>Coming Soon!</p>}
           {features?.map((feature, index) => {
-            console.log(feature);
             const backgroundImage = feature.backgroundImage ? urlFor(feature.backgroundImage).url() : null;
             const featureImages = feature.images?.map(img => urlFor(img).url()) || [];
             const iconSvgUrl = feature.iconSvg?.asset?._ref
@@ -38,7 +38,7 @@ const FeatureBoxes = ({ featureBoxesData }) => {
             return (
               <div
                 key={index}
-                className="box"
+                className={backgroundImage ? 'box has-background' : 'box'}
                 style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none' }}
                 onClick={() => featureImages.length > 0 && openModal(index, featureImages)}
               >
@@ -59,7 +59,9 @@ const FeatureBoxes = ({ featureBoxesData }) => {
                 )}
 
                 <h3 className="box-title">{feature.title}</h3>
-                <p className="box-text">{feature.description}</p>
+                {feature?.description && <p className="box-text">{feature.description}</p>}
+                {feature?.location && <p className="box-text"><FaMapMarkerAlt />{feature.location}</p>}
+                {feature?.numUnits && <p className="box-text">{feature.numUnits}</p>}
               </div>
             );
           })}
