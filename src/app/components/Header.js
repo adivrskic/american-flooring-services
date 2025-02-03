@@ -56,7 +56,7 @@ const Header = ({ headerData }) => {
               src={imageUrl}
               alt="American Flooring Services Logo"
               layout="fixed"
-              width={230}
+              width={200}
               height={60}
               quality={100}
               priority
