@@ -10,5 +10,6 @@ import logos from './logos';
 import page from "./page";
 import twoCol from './twoCol';
 import headerList from './headerList';
+import usState from './usState';
 
-export const schemaTypes = [page, banner, logos, headerList, featureBoxes, centeredCTA, googleMap, imageRow, about, twoCol, header, footer];
+export const schemaTypes = [page, banner, logos, headerList, featureBoxes, centeredCTA, googleMap, imageRow, about, twoCol, usState, header, footer];

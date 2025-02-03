@@ -30,7 +30,8 @@ export default {
         { type: "headerList" },
         { type: "imageRow" },
         { type: "logos" },
-        { type: "twoCol"}
+        { type: "twoCol"},
+        { type: 'usState'}
       ],
     },
   ],

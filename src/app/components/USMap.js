@@ -1,11 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import { states } from '../../data';
+// import { states } from '../../data';
 import Link from 'next/link';
 import './USMap.scss';
 
-const USMap = () => {
+const USMap = ({states}) => {
+
   const [selectedState, setSelectedState] = useState('GA');
   const handleStateClick = (e, stateId) => {
     e.preventDefault();
@@ -15,7 +16,7 @@ const USMap = () => {
   return (
     <div className='us-map'>
       <div className='us-map__heading'>
-        <h2>Serving over 15 states</h2>
+        <h2>Serving over {states.length} states</h2>
         <p>And continuing to grow</p>
       </div>
 

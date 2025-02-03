@@ -15,7 +15,7 @@ export const handler = async (event, context) => {
 
   const emailData = {
     sender: { email: 'adivrskic123@gmail.com' },
-    to: [{ email: 'adivrskic123@gmail.com' }],
+    to: [{ email: 'info@americanflooringservices.com' }],
     subject: `AmericanFlooringServices.com - New contact form submission from ${name}`,
     htmlContent: `
     <html>
