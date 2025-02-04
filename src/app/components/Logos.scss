@@ -3,7 +3,7 @@
 .logo-grid {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 86.5px); /* Full screen height */
+  min-height: calc(100vh - 86.5px); /* Full screen height */
   box-sizing: border-box;
 
   h2 {
@@ -45,6 +45,7 @@
     align-items: center;
     background: $primary; /* Optional background for stats section */
     padding: $padding-md;
+    min-height: fit-content;
   }
 
   .logo-grid__stat {
