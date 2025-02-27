@@ -12,11 +12,13 @@ const FeatureBoxes = ({ featureBoxesData }) => {
   const { title, features, link, linkHref, linkText } = featureBoxesData;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
+  const [selected, setSelected] = useState(0);
+  
+  const openModal = (index) => {
+    setSelected(index);
     setIsModalOpen(true);
   };
-
+  
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -40,7 +42,7 @@ const FeatureBoxes = ({ featureBoxesData }) => {
                 key={index}
                 className={backgroundImage ? 'box has-background' : 'box'}
                 style={{ backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none' }}
-                onClick={() => featureImages.length > 0 && openModal(index, featureImages)}
+                onClick={() => featureImages.length > 0 && openModal(index)}
               >
                 {backgroundImage && <div className="box-overlay"></div>}
                 {feature.iconType === 'image' && feature.iconImage && (
@@ -76,7 +78,7 @@ const FeatureBoxes = ({ featureBoxesData }) => {
 
       {/* Modal Slideshow */}
       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <Slideshow slides={featureBoxesData?.features?.[0]?.images} />
+        <Slideshow slides={featureBoxesData?.features?.[selected]?.images} />
       </Modal>
     </>
   );
