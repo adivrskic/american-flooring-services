@@ -26,8 +26,10 @@
   &__content {
     position: relative;
     display: flex;
-    height: calc(100vh - 86.5px);
+    flex-direction: column-reverse;
+    min-height: calc(100vh - 86.5px);
     width: 100%;
+    margin-bottom: $padding-md;
   }
 
   .state-info {
@@ -37,22 +39,14 @@
 
 .svg-map {
   height: 100%;
-  width: 50vw;
-  perspective: 1200px;
-  perspective-origin: center;
-  transform-style: preserve-3d;
+  width: 100%;
   display: flex;
   justify-content: center;
-  transform: translate(0, -50%);
-  top: 50%;
-  right: 0;
-  position: absolute;
 
   svg {
     height: 100%;
     width: 100%;
-    transform: rotateY(-30deg) scale(1.4) skewY(7deg) translate(-150px, 0px); /* Perspective + tilt */
-    transform-origin: center;
+    max-width: 960px;
   }
 
   svg a {
@@ -102,14 +96,9 @@
 }
 
 .state-info-wrapper {
-  width: 50vw;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translate(0, -50%);
-  perspective: 1200px;
-  perspective-origin: center;
-  transform-style: preserve-3d;
+  width: 100%;
+  max-width: 960px;
+  margin: auto;
 }
 
 .state-info {
@@ -117,8 +106,6 @@
   flex-direction: column;
   gap: $padding-md;
   text-align: center;
-  transform: rotateY(30deg) scale(1) skewY(2deg) translate(60px, -60px);
-  transform-origin: center;
 }
 
 .info-grid {
