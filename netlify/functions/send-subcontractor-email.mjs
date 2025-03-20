@@ -15,6 +15,7 @@ exports.handler = async (event, context) => {
 
   // Helper function to generate the PDF
   const generateSubcontractorPDF = async (formData) => {
+    console.log(formData);
     const pdfDoc = await PDFDocument.create();
     const page = pdfDoc.addPage([600, 800]); // Increased page height for better spacing
     const timesRomanFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
@@ -35,8 +36,9 @@ exports.handler = async (event, context) => {
     const sectionData = [
       { label: 'First Name:', value: formData.firstName },
       { label: 'Last Name:', value: formData.lastName },
+      { label: 'Company Name:', value: formData.companyName },
+      { label: 'Business Phone:', value: formData.businessPhone },
       { label: 'Email:', value: formData.email },
-      { label: 'Phone:', value: formData.phone },
       { label: 'Address:', value: formData.address },
     ];
   
@@ -50,11 +52,15 @@ exports.handler = async (event, context) => {
     page.setFontSize(18);
     page.drawText('Work Experience', { x: 50, y: y - 20, color: rgb(0, 0, 0) });
   
+    page.setFontSize(14);
     y -= 40; // Add extra space between sections
     const experienceData = [
-      { label: 'Years of Experience:', value: formData.experienceYears },
-      { label: 'Previous Employers:', value: formData.previousEmployers },
-      { label: 'Services Provided:', value: formData.services },
+      { label: 'Years in Trade:', value: formData.yearsInTrade },
+      { label: 'Products Installed:', value: formData.productsInstalled.join(', ') },
+      { label: 'General Liabilities:', value: formData.generalLiabilities },
+      { label: 'Workers Comp:', value: formData.workersComp },
+      { label: 'Willing to Obtain Insurance:', value: formData.willingToObtain },
+      { label: 'Additional Comments:', value: formData.additionalComments },
     ];
   
     experienceData.forEach((item) => {
