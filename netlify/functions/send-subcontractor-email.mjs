@@ -15,60 +15,217 @@ exports.handler = async (event, context) => {
 
   // Helper function to generate the PDF
   const generateSubcontractorPDF = async (formData) => {
-    console.log(formData);
     const pdfDoc = await PDFDocument.create();
-    const page = pdfDoc.addPage([600, 800]); // Increased page height for better spacing
-    const timesRomanFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
-  
-    // Title
-    const titleColor = rgb(0.577, 0.078, 0.227); // #93143A
-    page.setFont(timesRomanFont);
-    page.setFontSize(32);
-    page.drawText('Subcontractor Application Form', { x: 50, y: 750, color: titleColor });
-  
-    // Add section for Personal Information
-    page.setFontSize(18);
-    page.drawText('Personal Information', { x: 50, y: 720, color: rgb(0, 0, 0) });
-  
-    // Add the form data with proper labels
-    page.setFontSize(14);
-    let y = 680; // Starting position
-    const sectionData = [
-      { label: 'First Name:', value: formData.firstName },
-      { label: 'Last Name:', value: formData.lastName },
-      { label: 'Company Name:', value: formData.companyName },
-      { label: 'Business Phone:', value: formData.businessPhone },
-      { label: 'Email:', value: formData.email },
-      { label: 'Address:', value: formData.address },
-    ];
-  
-    sectionData.forEach((item) => {
-      const fieldValue = item.value || 'N/A';
-      page.drawText(`${item.label} ${fieldValue}`, { x: 50, y });
-      y -= 20; // Move to the next line
+    const page = pdfDoc.addPage([612, 792]); // Standard US Letter size
+    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const helveticaBold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
+    
+    // Colors
+    const primaryColor = rgb(0.577, 0.078, 0.227); // #93143A
+    const textColor = rgb(0.15, 0.15, 0.15);
+    const lineColor = rgb(0.8, 0.8, 0.8);
+    
+    // Margins and spacing
+    const marginLeft = 60;
+    const marginRight = 60;
+    const pageWidth = page.getWidth() - marginLeft - marginRight;
+    
+    // Header with logo placeholder and title
+    page.drawRectangle({
+      x: 0,
+      y: 732,
+      width: page.getWidth(),
+      height: 60,
+      color: primaryColor,
     });
-  
-    // Add section for other relevant information (e.g., experience, services)
-    page.setFontSize(18);
-    page.drawText('Work Experience', { x: 50, y: y - 20, color: rgb(0, 0, 0) });
-  
-    page.setFontSize(14);
-    y -= 40; // Add extra space between sections
-    const experienceData = [
-      { label: 'Years in Trade:', value: formData.yearsInTrade },
-      { label: 'Products Installed:', value: formData.productsInstalled.join(', ') },
-      { label: 'General Liabilities:', value: formData.generalLiabilities },
-      { label: 'Workers Comp:', value: formData.workersComp },
-      { label: 'Willing to Obtain Insurance:', value: formData.willingToObtain },
-      { label: 'Additional Comments:', value: formData.additionalComments },
-    ];
-  
-    experienceData.forEach((item) => {
-      const fieldValue = item.value || 'N/A';
-      page.drawText(`${item.label} ${fieldValue}`, { x: 50, y });
-      y -= 20; // Move to the next line
+    
+    page.setFont(helveticaBold);
+    page.setFontSize(22);
+    page.drawText('Subcontractor Application Form', { 
+      x: marginLeft, 
+      y: 755, 
+      color: rgb(1, 1, 1) 
     });
-  
+    
+    // Current date
+    const currentDate = new Date().toLocaleDateString('en-US', {
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric'
+    });
+    page.setFont(helveticaFont);
+    page.setFontSize(10);
+    page.drawText(`Date: ${currentDate}`, { 
+      x: marginLeft, 
+      y: 715, 
+      color: textColor 
+    });
+    
+    // Helper function for drawing sections
+    const drawSection = (title, data, startY) => {
+      let y = startY;
+      
+      // Section Title
+      page.setFont(helveticaBold);
+      page.setFontSize(14);
+      page.drawText(title, { 
+        x: marginLeft, 
+        y, 
+        color: primaryColor 
+      });
+      
+      // Draw a line below the section title
+      y -= 10;
+      page.drawLine({
+        start: { x: marginLeft, y },
+        end: { x: page.getWidth() - marginLeft, y },
+        thickness: 1,
+        color: lineColor,
+      });
+      
+      y -= 25;
+      
+      // Draw fields in two columns if possible
+      page.setFont(helveticaFont);
+      page.setFontSize(11);
+      
+      // Calculate if we should use columns (only for short field values)
+      const useColumns = data.length >= 4 && !data.some(item => 
+        (item.value && item.value.length > 30) || item.multiline);
+      
+      if (useColumns) {
+        const col1X = marginLeft;
+        const col2X = marginLeft + pageWidth / 2 + 10;
+        const itemsPerColumn = Math.ceil(data.length / 2);
+        
+        data.forEach((item, index) => {
+          const colX = index < itemsPerColumn ? col1X : col2X;
+          const rowIndex = index < itemsPerColumn ? index : index - itemsPerColumn;
+          const rowY = y - (rowIndex * 25);
+          
+          const fieldValue = item.value || 'N/A';
+          
+          page.setFont(helveticaBold);
+          page.drawText(`${item.label}:`, { 
+            x: colX, 
+            y: rowY, 
+            color: textColor 
+          });
+          
+          page.setFont(helveticaFont);
+          page.drawText(`${fieldValue}`, { 
+            x: colX + 120, 
+            y: rowY, 
+            color: textColor 
+          });
+        });
+        
+        return y - (itemsPerColumn * 25) - 30;
+      } else {
+        // Single column layout for longer fields
+        data.forEach((item) => {
+          const fieldValue = item.value || 'N/A';
+          
+          page.setFont(helveticaBold);
+          page.drawText(`${item.label}:`, { 
+            x: marginLeft, 
+            y, 
+            color: textColor 
+          });
+          
+          page.setFont(helveticaFont);
+          if (item.multiline && fieldValue.length > 60) {
+            // Handle multiline text for longer fields like comments
+            const words = fieldValue.split(' ');
+            let line = '';
+            let lineY = y - 20;
+            
+            words.forEach(word => {
+              const testLine = line + (line ? ' ' : '') + word;
+              if (testLine.length > 70) {
+                page.drawText(line, { 
+                  x: marginLeft, 
+                  y: lineY, 
+                  color: textColor 
+                });
+                line = word;
+                lineY -= 20;
+              } else {
+                line = testLine;
+              }
+            });
+            
+            if (line) {
+              page.drawText(line, { 
+                x: marginLeft, 
+                y: lineY, 
+                color: textColor 
+              });
+              lineY -= 20;
+            }
+            
+            y = lineY;
+          } else {
+            page.drawText(`${fieldValue}`, { 
+              x: marginLeft + 150, 
+              y, 
+              color: textColor 
+            });
+            y -= 25;
+          }
+        });
+        
+        return y - 20;
+      }
+    };
+    
+    // Personal Information Section
+    let currentY = 680;
+    
+    const personalInfo = [
+      { label: 'First Name', value: formData.firstName },
+      { label: 'Last Name', value: formData.lastName },
+      { label: 'Company Name', value: formData.companyName },
+      { label: 'Business Phone', value: formData.businessPhone },
+      { label: 'Email', value: formData.email },
+      { label: 'Address', value: formData.address }
+    ];
+    
+    currentY = drawSection('Personal Information', personalInfo, currentY);
+    
+    // Work Experience Section
+    const workExperience = [
+      { label: 'Years in Trade', value: formData.yearsInTrade },
+      { label: 'Products Installed', value: formData.productsInstalled.join(', ') },
+      { label: 'General Liabilities', value: formData.generalLiabilities },
+      { label: 'Workers Comp', value: formData.workersComp },
+      { label: 'Willing to Obtain Insurance', value: formData.willingToObtain }
+    ];
+    
+    currentY = drawSection('Work Experience', workExperience, currentY);
+    
+    // Additional Information Section
+    const additionalInfo = [
+      { label: 'Additional Comments', value: formData.additionalComments, multiline: true }
+    ];
+    
+    currentY = drawSection('Additional Information', additionalInfo, currentY);
+    
+    // Add footer
+    page.setFont(helveticaFont);
+    page.setFontSize(9);
+    page.drawText('American Flooring Services - Subcontractor Application', {
+      x: marginLeft,
+      y: 40,
+      color: textColor
+    });
+    
+    page.drawText('Page 1 of 1', {
+      x: page.getWidth() - marginLeft - 50,
+      y: 40,
+      color: textColor
+    });
+    
     // Serialize the PDF to bytes
     const pdfBytes = await pdfDoc.save();
     return Buffer.from(pdfBytes).toString('base64'); // Convert to Base64
@@ -81,8 +238,8 @@ exports.handler = async (event, context) => {
 
     // Prepare email data with the correctly structured attachment
     const emailData = {
-      sender: { email: 'adivrskic123@gmail.com' }, // Replace with your sender email
-      to: [{ email: 'adivrskic123@gmail.com' }], // Replace with the recipient email
+      sender: { email: 'adivrskic123@gmail.com' },
+      to: [{ email: 'adivrskic123@gmail.com' }],
       subject: `AmericanFlooringServices.com - New Subcontractor Application from ${formData.firstName} ${formData.lastName}`,
       htmlContent: `
         <html>
