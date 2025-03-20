@@ -239,7 +239,7 @@ exports.handler = async (event, context) => {
     // Prepare email data with the correctly structured attachment
     const emailData = {
       sender: { email: 'adivrskic123@gmail.com' },
-      to: [{ email: 'adivrskic123@gmail.com' }],
+      to: [{ email: 'info@americanflooringservices.com' }],
       subject: `AmericanFlooringServices.com - New Subcontractor Application from ${formData.firstName} ${formData.lastName}`,
       htmlContent: `
         <html>
