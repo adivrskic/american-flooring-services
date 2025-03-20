@@ -14,8 +14,8 @@ export const handler = async (event, context) => {
   const url = 'https://api.brevo.com/v3/smtp/email';
 
   const emailData = {
-    sender: { email: 'adivrskic123@gmail.com' },
-    to: [{ email: 'info@americanflooringservices.com' }],
+    sender: { email: 'adivrskic@adivrskic.dev' },
+    to: [{ email: 'adivrskic123@gmail.com' }],
     subject: `AmericanFlooringServices.com - New contact form submission from ${name}`,
     htmlContent: `
     <html>
