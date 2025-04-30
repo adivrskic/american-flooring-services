@@ -1,139 +1,157 @@
 @import '../../styles/variables';
 
+// Enhanced transitions
+$slide-transition: transform 0.5s cubic-bezier(0.45, 0, 0.15, 1), opacity 0.5s ease;
+$arrow-transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
 .slideshow {
-  display: flex;
-  align-items: center;
   position: relative;
   height: 100%;
-
-  .arrows {
-    display: flex;
-    gap: $padding-md;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  
+  .main-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    
+    &.transitioning {
+      .slide-image {
+        opacity: 0.9;
+        transform: scale(1.02);
+      }
+    }
+    
+    .slide-image {
+      transition: $slide-transition;
+      will-change: transform, opacity;
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.05) 0%,
+        rgba(0, 0, 0, 0.2) 100%
+      );
+      pointer-events: none;
+    }
   }
-
+  
   .arrow {
     position: absolute;
     top: 50%;
-    transform: translate(-50%);
-    fill: $text-light;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
     border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-    cursor: pointer;
+    width: 48px;
+    height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     z-index: 10;
-
+    transition: $arrow-transition;
+    opacity: 0.7;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: $secondary;
+      transition: $arrow-transition;
+    }
+    
     &.left-arrow {
-      left: 40px;
+      left: 20px;
     }
-
+    
     &.right-arrow {
-      right: 0px;
+      right: 20px;
     }
-
-    &:hover {
-      fill: $primary;
+    
+    &:hover, &:focus {
+      opacity: 1;
+      transform: translateY(-50%) scale(1.05);
+      background: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      
+      svg {
+        fill: $primary;
+      }
+    }
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba($primary, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
     }
   }
-
-  .main-image {
-    width: 100%;
-    height: 100%;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 4px;
-    }
-  }
-
-  .right-section {
-    width: 33.333%;
-    height: 100%;
+  
+  .indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 0 $padding-md;
-
-    .gallery {
-      display: flex;
-      flex-direction: column;
-
-      .gallery-image {
-        flex: 1;
-        cursor: pointer;
-
-        img {
-          width: 100px;
-          height: 100px;
-          object-fit: cover;
-          border-radius: 3px;
-          padding: 5px;
-          transition: transform 0.2s, border-color 0.2s;
-
-          &:hover {
-            transform: scale(1.05);
-          }
-        }
-
+    gap: 10px;
+    z-index: 10;
+    
+    .indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &.active {
+        background-color: $primary;
+        transform: scale(1.2);
       }
-
-      .gallery-image.active img {
-        border: 2px solid $primary;
-        // opacity: 0.8;
-      }
-    }
-
-    .description {
-      display: flex;
-      flex-direction: column;
-      gap: $padding-md;
-
-      h2, p {
-        text-align: left;
+      
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.8);
       }
     }
   }
 }
 
+/* Media Queries for Responsive Design */
 @media (max-width: 960px) {
   .slideshow {
-    flex-direction: column;
-
-    .main-image {
-      width: 100%;
-      height: calc(50vh - 35.75px);
-  
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .arrow {
+      width: 40px;
+      height: 40px;
+      
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+      
+      &.left-arrow {
+        left: 15px;
+      }
+      
+      &.right-arrow {
+        right: 15px;
       }
     }
-
-    .right-section {
-      width: 100%;
-      padding: $padding-sm 0;
-      height: calc(50vh - 35.75px);
-  
-      .gallery {
-        display: flex;
-        flex-direction: row;
-        width: fit-content;
-
-        .gallery-image img {
-          height: 80px;
-          width: 80px;
-        }
-      }
-
-      .description {
-        gap: $padding-sm;
+    
+    .indicators {
+      bottom: 15px;
+      
+      .indicator {
+        width: 8px;
+        height: 8px;
       }
     }
   }
@@ -141,8 +159,33 @@
 
 @media (max-width: 600px) {
   .slideshow {
-    .right-section .arrows {
-      gap: $padding-sm;
+    .arrow {
+      width: 36px;
+      height: 36px;
+      opacity: 0.8;
+      
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+      
+      &.left-arrow {
+        left: 10px;
+      }
+      
+      &.right-arrow {
+        right: 10px;
+      }
+    }
+    
+    .indicators {
+      bottom: 10px;
+      gap: 8px;
+      
+      .indicator {
+        width: 6px;
+        height: 6px;
+      }
     }
   }
 }
