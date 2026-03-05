@@ -17,6 +17,7 @@ const ProductsPage = async () => {
 
   return (
     <>
+      <h1>Products</h1>
       <ImageRow imageRowData={imageRowData} />
       <FeatureBoxes featureBoxesData={featureBoxesData} />
     </>
