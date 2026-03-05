@@ -15,7 +15,10 @@ const PortfolioPage = async () => {
   const featureBoxesData = components.filter(item => item._type === 'featureBoxes');
 
   return (
-    <ImageRow imageRowData={imageRowData} featureBoxesData={featureBoxesData} />
+    <>
+      <h1>Portfolio</h1>
+      <ImageRow imageRowData={imageRowData} featureBoxesData={featureBoxesData} />
+    </>
   );
 };
 

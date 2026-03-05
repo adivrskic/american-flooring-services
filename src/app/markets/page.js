@@ -28,6 +28,7 @@ const MarketsPage = async () => {
 
   return (
     <>
+      <h1>Markets</h1>
       <USMap states={formattedData} />
       <SubcontractorApplicationForm />
     </>

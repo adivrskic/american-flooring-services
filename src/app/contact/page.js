@@ -7,7 +7,10 @@ export const metadata = {
 
 const ContactPage = () => {
   return (
-    <ContactForm />
+    <>
+      <h1>Contact Us</h1>
+      <ContactForm />
+    </>
   );
 };
 
