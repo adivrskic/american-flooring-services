@@ -13,7 +13,7 @@
     "@sanity/image-url": "^1.1.0",
     "american-flooring-services": "file:sanity",
     "axios": "^1.7.9",
-    "next": "15.1.5",
+    "next": "15.1.9",
     "next-sanity": "^9.8.46",
     "next-seo": "^6.6.0",
     "node-fetch": "^3.3.2",
