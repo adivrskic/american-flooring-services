@@ -37,7 +37,7 @@ const Footer = ({ footerData }) => {
         </div>
       </div>
       <div className="footer__bottom">
-        <p>&copy; {new Date().getFullYear()} American Flooring Services Inc. All rights reserved.</p>
+        <p>&copy; 2026 American Flooring Services Inc. All rights reserved.</p>
       </div>
     </footer>
   );
