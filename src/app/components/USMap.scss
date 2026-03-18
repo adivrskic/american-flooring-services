@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 .us-map {
   display: flex;
   flex-direction: column;
@@ -71,9 +71,17 @@
   svg a#IN,
   svg a#VA,
   svg a#NC,
-  svg a#SC {
+  svg a#SC,
+  svg a#MS,
+  svg a#SD,
+  svg a#AR,
+  svg a#PA,
+  svg a#CO,
+  svg a#OH,
+  svg a#VA,
+  svg a#IL {
     fill: $primary;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
   svg a#GA:hover,
@@ -125,7 +133,6 @@
   margin-bottom: $padding-sm;
   font-size: $text-sm;
   color: $text-dark;
-
 }
 
 .contact-button {
@@ -173,7 +180,7 @@
     svg {
       transform: initial;
     }
-  } 
+  }
 }
 
 @media (max-width: 1228px) {
@@ -181,7 +188,6 @@
     gap: $padding-sm;
   }
 }
-
 
 @media (max-width: 600px) {
   .us-map {
