@@ -13,8 +13,6 @@ const USMap = ({states}) => {
     setSelectedState(stateId);
   };
 
-  console.log(states);
-
   return (
     <div className='us-map'>
       <div className='us-map__heading'>
